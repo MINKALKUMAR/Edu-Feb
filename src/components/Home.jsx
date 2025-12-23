@@ -91,7 +91,8 @@ function Home() {
     },
 
     title: {
-      fontSize: "clamp(2rem, 5vw, 3.4rem)",
+      // fontSize: "clamp(2rem, 5vw, 3.4rem)",
+      fontSize: "clamp(1.6rem, 4vw, 2.6rem)",
       fontWeight: 800,
       marginBottom: "12px",
       lineHeight: 1.2,
@@ -133,10 +134,10 @@ function Home() {
             loading="lazy"
           />
 
-          <h1 style={styles.title}>Education Tomorrow</h1>
+          <h1 style={styles.title}>Education 4.0: Learning for a New Era of AI & Innovation</h1>
 
           <h2 style={styles.subtitle}>
-            Education 4.0: Learning for a New Era of AI & Innovation
+            07th February 2026 • Hotel Park Plaza • Chandigarh
           </h2>
 
           <div style={styles.buttonWrap}>

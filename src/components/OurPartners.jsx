@@ -63,9 +63,20 @@ const OurPartners = () => {
     }
 
     /* FIRST ROW */
+    // .partner-grid.first-row {
+    //   display: grid;
+    //   grid-template-columns: repeat(3, 1fr);
+    //   gap: 35px;
+    //   margin-bottom: 70px;
+   // }
+
+
+    /* FIRST ROW */
     .partner-grid.first-row {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: center;
       gap: 35px;
       margin-bottom: 70px;
     }
@@ -165,7 +176,7 @@ const OurPartners = () => {
       partners: [
         { name: "Organiser", logo: FintrexLogo, link: "https://fintrexmedia.com/" },
         { name: "Knowledge Partner", logo: EducoreLogo, link: "#" },
-        { name: "Presenting Partner", logo: WULogoWhite, link: "#" },
+        // { name: "Presenting Partner", logo: WULogoWhite, link: "#" },
       ],
     },
     // {
