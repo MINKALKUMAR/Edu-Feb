@@ -1,20 +1,20 @@
 // import React, { useEffect, useMemo, useRef, useState } from "react";
 
 // /**
-//  * PastGlimpses — optimized & smooth
-//  * - 3 strips only
-//  * - 6 images per strip
-//  * - Large image size
-//  * - No hanging / freezing
+//  * PastGlimpses — Facebook-style shimmer loader
+//  * ✔ Individual image loading
+//  * ✔ Skeleton shimmer
+//  * ✔ Fade-in images
+//  * ✔ ZERO hang
 //  */
 
 // export default function PastGlimpses() {
-//   const [isMobile, setIsMobile] = useState(false);
-//   const [isVisible, setIsVisible] = useState(true);
-//   const [reducedMotion, setReducedMotion] = useState(false);
 //   const sectionRef = useRef(null);
+//   const [isMobile, setIsMobile] = useState(false);
+//   const [visible, setVisible] = useState(false);
+//   const [ready, setReady] = useState(false);
 
-//   /* ================= MEDIA QUERIES ================= */
+//   /* ========= MEDIA ========= */
 //   useEffect(() => {
 //     const mq = window.matchMedia("(max-width: 768px)");
 //     const update = () => setIsMobile(mq.matches);
@@ -23,166 +23,214 @@
 //     return () => mq.removeEventListener("change", update);
 //   }, []);
 
+//   /* ========= OBSERVE ========= */
 //   useEffect(() => {
-//     const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
-//     const update = () => setReducedMotion(mq.matches);
-//     update();
-//     mq.addEventListener("change", update);
-//     return () => mq.removeEventListener("change", update);
-//   }, []);
-
-//   /* ================= VISIBILITY ================= */
-//   useEffect(() => {
-//     if (!sectionRef.current) return;
 //     const obs = new IntersectionObserver(
-//       ([e]) => setIsVisible(e.isIntersecting),
-//       { threshold: 0.1 }
+//       ([e]) => e.isIntersecting && setVisible(true),
+//       { threshold: 0.2 }
 //     );
-//     obs.observe(sectionRef.current);
+//     sectionRef.current && obs.observe(sectionRef.current);
 //     return () => obs.disconnect();
 //   }, []);
 
-//   /* ================= IMAGES ================= */
-//   const imagesAll = [
+//   /* ========= IDLE START ========= */
+//   useEffect(() => {
+//     if (!visible) return;
+//     const id = requestIdleCallback(() => setReady(true));
+//     return () => cancelIdleCallback(id);
+//   }, [visible]);
+
+//   /* ========= IMAGES ========= */
+//   const images = [
 //     "https://res.cloudinary.com/djevhndbo/image/upload/v1766414786/B_4_p7nhua.jpg",
 //     "https://res.cloudinary.com/djevhndbo/image/upload/v1766414787/B_11_h8k2b6.jpg",
 //     "https://res.cloudinary.com/djevhndbo/image/upload/v1766414787/B_9_ukmdug.jpg",
 //     "https://res.cloudinary.com/djevhndbo/image/upload/v1766414788/B_3_t5wanw.jpg",
 //     "https://res.cloudinary.com/djevhndbo/image/upload/v1766414788/B_5_vqz3cj.jpg",
 //     "https://res.cloudinary.com/djevhndbo/image/upload/v1766414788/B_8_m9drkt.jpg",
-
 //     "https://res.cloudinary.com/djevhndbo/image/upload/v1766414788/B_2_iaxbod.jpg",
 //     "https://res.cloudinary.com/djevhndbo/image/upload/v1766414789/B_10_ayhaam.jpg",
 //     "https://res.cloudinary.com/djevhndbo/image/upload/v1766414790/B_1_rc3uk8.jpg",
 //     "https://res.cloudinary.com/djevhndbo/image/upload/v1766414866/A_8_h1viuy.jpg",
 //     "https://res.cloudinary.com/djevhndbo/image/upload/v1766414873/A_3_g8x4v2.jpg",
 //     "https://res.cloudinary.com/djevhndbo/image/upload/v1766414873/A_5_dahvlb.jpg",
-
 //     "https://res.cloudinary.com/djevhndbo/image/upload/v1766414879/A_4_hz2tni.jpg",
 //     "https://res.cloudinary.com/djevhndbo/image/upload/v1766414883/A_1_quybjd.jpg",
 //     "https://res.cloudinary.com/djevhndbo/image/upload/v1766414887/A_2_tad9je.jpg",
 //   ];
 
-//   /* ================= SPLIT INTO STRIPS ================= */
-//   const strips = useMemo(() => {
-//     return [
-//       imagesAll.slice(0, 6),
-//       imagesAll.slice(6, 11),
-//       imagesAll.slice(11, 18),
-//     ];
-//   }, []);
+//   const strips = useMemo(
+//     () => [images.slice(0, 5), images.slice(5, 10), images.slice(10, 15)],
+//     []
+//   );
 
-//   const speeds = [32, 36, 40];
-
-//   /* ================= STYLES ================= */
-//   const styles = {
-//     section: {
-//       minHeight: "100vh",
-//       background: "var(--bg-gradient)",
-//       padding: isMobile ? "40px 0 60px" : "70px 0",
-//       textAlign: "center",
-//     },
-//     heading: {
-//       fontSize: isMobile ? "2rem" : "2.8rem",
-//       fontWeight: 700,
-//       marginBottom: "30px",
-//       color: "#000",
-//     },
-//     stripOuter: {
-//       width: "100%",
-//       overflow: "hidden",
-//       marginBottom: "18px",
-//     },
-//     stripInner: (dir, speed) => ({
-//       display: "flex",
-//       gap: isMobile ? "14px" : "20px",
-//       willChange: "transform",
-//       animation:
-//         reducedMotion || !isVisible
-//           ? "none"
-//           : `${dir === "left" ? "scrollLeft" : "scrollRight"} ${speed}s linear infinite`,
-//     }),
-//     img: {
-//       width: isMobile ? "220px" : "340px",
-//       height: isMobile ? "150px" : "220px",
-//       objectFit: "cover",
-//       borderRadius: "12px",
-//       flex: "0 0 auto",
-//     },
-//   };
+//   const imgW = isMobile ? 220 : 320;
+//   const imgH = isMobile ? 150 : 210;
+//   const gap = isMobile ? 14 : 20;
 
 //   return (
 //     <>
 //       <style>{`
-//         @keyframes scrollLeft {
-//           from { transform: translate3d(0,0,0); }
-//           to { transform: translate3d(-50%,0,0); }
+//         .pg-section {
+//           min-height: 100vh;
+//           padding: ${isMobile ? "40px 0 60px" : "70px 0"};
+//           background: var(--bg-gradient);
+//           text-align: center;
+//           content-visibility: auto;
 //         }
-//         @keyframes scrollRight {
-//           from { transform: translate3d(-50%,0,0); }
+
+//         .pg-strip {
+//           overflow: hidden;
+//           margin-bottom: 18px;
+//         }
+
+//         .pg-track {
+//           display: flex;
+//           gap: ${gap}px;
+//           will-change: transform;
+//         }
+
+//         .pg-left { animation: pgLeft 40s linear infinite; }
+//         .pg-right { animation: pgRight 44s linear infinite; }
+//         .paused { animation-play-state: paused; }
+
+//         @keyframes pgLeft {
+//           to { transform: translate3d(-${(imgW + gap) * 5}px,0,0); }
+//         }
+//         @keyframes pgRight {
+//           from { transform: translate3d(-${(imgW + gap) * 5}px,0,0); }
 //           to { transform: translate3d(0,0,0); }
+//         }
+
+//         /* ===== BOX ===== */
+//         .pg-box {
+//           position: relative;
+//           width: ${imgW}px;
+//           height: ${imgH}px;
+//           border-radius: 12px;
+//           background: #e4e6eb;
+//           overflow: hidden;
+//           flex-shrink: 0;
+//         }
+
+//         /* ===== SHIMMER ===== */
+//         .pg-box::before {
+//           content: "";
+//           position: absolute;
+//           inset: 0;
+//           background: linear-gradient(
+//             90deg,
+//             #e4e6eb 0%,
+//             #f0f2f5 40%,
+//             #e4e6eb 80%
+//           );
+//           transform: translateX(-100%);
+//           animation: shimmer 1.4s infinite;
+//         }
+
+//         .loaded::before {
+//           display: none;
+//         }
+
+//         @keyframes shimmer {
+//           100% { transform: translateX(100%); }
+//         }
+
+//         /* ===== IMAGE ===== */
+//         .pg-img {
+//           width: 100%;
+//           height: 100%;
+//           object-fit: cover;
+//           opacity: 0;
+//           transition: opacity 0.5s ease;
+//         }
+
+//         .loaded .pg-img {
+//           opacity: 1;
 //         }
 //       `}</style>
 
-//       <section
-//         id="pastglimpses"
-//         ref={sectionRef}
-//         style={styles.section}
-//         aria-label="Past Glimpses"
-//       >
-//         <h2 style={styles.heading}>Past Glimpses</h2>
+//       <section ref={sectionRef} className="pg-section">
+//         <h2 style={{ fontSize: isMobile ? "2rem" : "2.8rem", marginBottom: 30 }}>
+//           Past Glimpses
+//         </h2>
 
-//         {strips.map((imgs, idx) => {
-//           const direction = idx % 2 === 0 ? "left" : "right";
-//           const looped = [...imgs, ...imgs]; // minimal duplication
-
-//           return (
-//             <div key={idx} style={styles.stripOuter}>
-//               <div style={styles.stripInner(direction, speeds[idx])}>
-//                 {looped.map((src, i) => (
-//                   <img
-//                     key={i}
-//                     src={src}
-//                     alt={`Past glimpse ${i + 1}`}
-//                     loading="lazy"
-//                     decoding="async"
-//                     draggable={false}
-//                     style={styles.img}
-//                     width={isMobile ? 220 : 340}
-//                     height={isMobile ? 150 : 220}
-//                   />
-//                 ))}
-//               </div>
+//         {strips.map((imgs, idx) => (
+//           <div key={idx} className="pg-strip">
+//             <div
+//               className={`pg-track ${
+//                 idx % 2 ? "pg-right" : "pg-left"
+//               } ${!ready ? "paused" : ""}`}
+//             >
+//               {[...imgs, ...imgs].map((src, i) => (
+//                 <ImageBox key={i} src={src} />
+//               ))}
 //             </div>
-//           );
-//         })}
+//           </div>
+//         ))}
 //       </section>
 //     </>
 //   );
 // }
 
+// /* ===== IMAGE BOX COMPONENT ===== */
+// function ImageBox({ src }) {
+//   const [loaded, setLoaded] = useState(false);
 
-
-
+//   return (
+//     <div className={`pg-box ${loaded ? "loaded" : ""}`}>
+//       <img
+//         src={src}
+//         className="pg-img"
+//         loading="lazy"
+//         decoding="async"
+//         onLoad={() => setLoaded(true)}
+//         alt=""
+//       />
+//     </div>
+//   );
+// }
 
 
 
 import React, { useEffect, useMemo, useRef, useState } from "react";
 
+/* ===== LOCAL IMAGES ===== */
+import A1 from "../assets/PastPhotos/A1.JPG";
+import A2 from "../assets/PastPhotos/A2.JPG";
+import A3 from "../assets/PastPhotos/A3.JPG";
+import A4 from "../assets/PastPhotos/A4.JPG";
+import A5 from "../assets/PastPhotos/A5.JPG";
+import A6 from "../assets/PastPhotos/A6.JPG";
+import A7 from "../assets/PastPhotos/A7.JPG";
+import A8 from "../assets/PastPhotos/A8.JPG";
+import A9 from "../assets/PastPhotos/A9.JPG";
+import A10 from "../assets/PastPhotos/A10.JPG";
+import A11 from "../assets/PastPhotos/A11.JPG";
+import A12 from "../assets/PastPhotos/A12.JPG";
+import A13 from "../assets/PastPhotos/A13.JPG";
+import A14 from "../assets/PastPhotos/A14.JPG";
+import A15 from "../assets/PastPhotos/A15.JPG";
+import A16 from "../assets/PastPhotos/A16.JPG";
+import A17 from "../assets/PastPhotos/A17.JPG";
+import A18 from "../assets/PastPhotos/A18.JPG";
+
 /**
- * PastGlimpses — HEAVILY optimized
- * - No hanging
- * - Large images
- * - GPU friendly
- * - Production-safe
+ * PastGlimpses — LOCAL IMAGES (ZERO HANG)
+ * ✔ 18 local images
+ * ✔ 3 strips (6 each)
+ * ✔ Shimmer loader
+ * ✔ Fade-in
+ * ✔ Idle + Intersection start
  */
 
 export default function PastGlimpses() {
-  const [isMobile, setIsMobile] = useState(false);
-  const [active, setActive] = useState(true);
   const sectionRef = useRef(null);
+  const [isMobile, setIsMobile] = useState(false);
+  const [visible, setVisible] = useState(false);
+  const [ready, setReady] = useState(false);
 
-  /* ========== MEDIA QUERY ========== */
+  /* ========= MEDIA ========= */
   useEffect(() => {
     const mq = window.matchMedia("(max-width: 768px)");
     const update = () => setIsMobile(mq.matches);
@@ -191,57 +239,41 @@ export default function PastGlimpses() {
     return () => mq.removeEventListener("change", update);
   }, []);
 
-  /* ========== PAUSE WHEN TAB HIDDEN ========== */
+  /* ========= OBSERVER ========= */
   useEffect(() => {
-    const onVis = () => setActive(!document.hidden);
-    document.addEventListener("visibilitychange", onVis);
-    return () => document.removeEventListener("visibilitychange", onVis);
-  }, []);
-
-  /* ========== PAUSE WHEN OFFSCREEN ========== */
-  useEffect(() => {
-    if (!sectionRef.current) return;
     const obs = new IntersectionObserver(
-      ([e]) => setActive(e.isIntersecting),
-      { threshold: 0.15 }
+      ([e]) => e.isIntersecting && setVisible(true),
+      { threshold: 0.2 }
     );
-    obs.observe(sectionRef.current);
+    sectionRef.current && obs.observe(sectionRef.current);
     return () => obs.disconnect();
   }, []);
 
-  /* ========== IMAGES ========== */
+  /* ========= IDLE START ========= */
+  useEffect(() => {
+    if (!visible) return;
+    const id = requestIdleCallback(() => setReady(true));
+    return () => cancelIdleCallback(id);
+  }, [visible]);
+
+  /* ========= IMAGES ========= */
   const images = [
-    "https://res.cloudinary.com/djevhndbo/image/upload/v1766414786/B_4_p7nhua.jpg",
-    "https://res.cloudinary.com/djevhndbo/image/upload/v1766414787/B_11_h8k2b6.jpg",
-    "https://res.cloudinary.com/djevhndbo/image/upload/v1766414787/B_9_ukmdug.jpg",
-    "https://res.cloudinary.com/djevhndbo/image/upload/v1766414788/B_3_t5wanw.jpg",
-    "https://res.cloudinary.com/djevhndbo/image/upload/v1766414788/B_5_vqz3cj.jpg",
-    "https://res.cloudinary.com/djevhndbo/image/upload/v1766414788/B_8_m9drkt.jpg",
-
-    "https://res.cloudinary.com/djevhndbo/image/upload/v1766414788/B_2_iaxbod.jpg",
-    "https://res.cloudinary.com/djevhndbo/image/upload/v1766414789/B_10_ayhaam.jpg",
-    "https://res.cloudinary.com/djevhndbo/image/upload/v1766414790/B_1_rc3uk8.jpg",
-    "https://res.cloudinary.com/djevhndbo/image/upload/v1766414866/A_8_h1viuy.jpg",
-    "https://res.cloudinary.com/djevhndbo/image/upload/v1766414873/A_3_g8x4v2.jpg",
-    "https://res.cloudinary.com/djevhndbo/image/upload/v1766414873/A_5_dahvlb.jpg",
-
-    "https://res.cloudinary.com/djevhndbo/image/upload/v1766414879/A_4_hz2tni.jpg",
-    "https://res.cloudinary.com/djevhndbo/image/upload/v1766414883/A_1_quybjd.jpg",
-    "https://res.cloudinary.com/djevhndbo/image/upload/v1766414887/A_2_tad9je.jpg",
+    A1, A2, A3, A4, A5, A6,
+    A7, A8, A9, A10, A11, A12,
+    A13, A14, A15, A16, A17, A18,
   ];
 
   const strips = useMemo(
     () => [
-      images.slice(0, 5),
-      images.slice(5, 10),
-      images.slice(10, 15),
+      images.slice(0, 6),
+      images.slice(6, 12),
+      images.slice(12, 18),
     ],
     []
   );
 
-  /* ========== SIZES ========== */
-  const imgW = isMobile ? 220 : 340;
-  const imgH = isMobile ? 150 : 220;
+  const imgW = isMobile ? 220 : 320;
+  const imgH = isMobile ? 150 : 210;
   const gap = isMobile ? 14 : 20;
 
   return (
@@ -250,9 +282,8 @@ export default function PastGlimpses() {
         .pg-section {
           min-height: 100vh;
           padding: ${isMobile ? "40px 0 60px" : "70px 0"};
-          text-align: center;
           background: var(--bg-gradient);
-          contain: layout paint;
+          text-align: center;
           content-visibility: auto;
         }
 
@@ -267,77 +298,101 @@ export default function PastGlimpses() {
           will-change: transform;
         }
 
-        .pg-run-left {
-          animation: pgLeft 35s linear infinite;
-        }
-
-        .pg-run-right {
-          animation: pgRight 38s linear infinite;
-        }
-
-        .pg-paused {
-          animation-play-state: paused;
-        }
+        .pg-left { animation: pgLeft 40s linear infinite; }
+        .pg-right { animation: pgRight 44s linear infinite; }
+        .paused { animation-play-state: paused; }
 
         @keyframes pgLeft {
-          from { transform: translate3d(0px,0,0); }
           to { transform: translate3d(-${(imgW + gap) * 6}px,0,0); }
         }
-
         @keyframes pgRight {
           from { transform: translate3d(-${(imgW + gap) * 6}px,0,0); }
-          to { transform: translate3d(0px,0,0); }
+          to { transform: translate3d(0,0,0); }
+        }
+
+        .pg-box {
+          position: relative;
+          width: ${imgW}px;
+          height: ${imgH}px;
+          border-radius: 12px;
+          background: #e4e6eb;
+          overflow: hidden;
+          flex-shrink: 0;
+        }
+
+        .pg-box::before {
+          content: "";
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(
+            90deg,
+            #e4e6eb 0%,
+            #f0f2f5 40%,
+            #e4e6eb 80%
+          );
+          transform: translateX(-100%);
+          animation: shimmer 1.4s infinite;
+        }
+
+        .loaded::before {
+          animation: none;
+          display: none;
+        }
+
+        @keyframes shimmer {
+          100% { transform: translateX(100%); }
         }
 
         .pg-img {
-          width: ${imgW}px;
-          height: ${imgH}px;
+          width: 100%;
+          height: 100%;
           object-fit: cover;
-          border-radius: 12px;
-          flex: 0 0 auto;
+          opacity: 0;
+          transition: opacity 0.5s ease;
+        }
+
+        .loaded .pg-img {
+          opacity: 1;
         }
       `}</style>
 
-      <section
-        id="pastglimpses"
-        ref={sectionRef}
-        className="pg-section"
-        aria-label="Past Glimpses"
-      >
-        <h2
-          style={{
-            fontSize: isMobile ? "2rem" : "2.8rem",
-            fontWeight: 700,
-            marginBottom: 30,
-            color: "#000",
-          }}
-        >
+      <section ref={sectionRef} className="pg-section">
+        <h2 style={{ fontSize: isMobile ? "2rem" : "2.8rem", marginBottom: 30 }}>
           Past Glimpses
         </h2>
 
-        {strips.map((imgs, idx) => {
-          const dir = idx % 2 === 0 ? "pg-run-left" : "pg-run-right";
-          const loop = [...imgs, ...imgs]; // minimal duplication
-
-          return (
-            <div key={idx} className="pg-strip">
-              <div className={`pg-track ${dir} ${!active ? "pg-paused" : ""}`}>
-                {loop.map((src, i) => (
-                  <img
-                    key={i}
-                    src={src}
-                    className="pg-img"
-                    alt={`Past glimpse ${i + 1}`}
-                    loading="lazy"
-                    decoding="async"
-                    draggable={false}
-                  />
-                ))}
-              </div>
+        {strips.map((imgs, idx) => (
+          <div key={idx} className="pg-strip">
+            <div
+              className={`pg-track ${
+                idx % 2 ? "pg-right" : "pg-left"
+              } ${!ready ? "paused" : ""}`}
+            >
+              {(isMobile ? imgs : [...imgs, ...imgs]).map((src, i) => (
+                <ImageBox key={i} src={src} />
+              ))}
             </div>
-          );
-        })}
+          </div>
+        ))}
       </section>
     </>
+  );
+}
+
+/* ===== IMAGE BOX ===== */
+function ImageBox({ src }) {
+  const [loaded, setLoaded] = useState(false);
+
+  return (
+    <div className={`pg-box ${loaded ? "loaded" : ""}`}>
+      <img
+        src={src}
+        className="pg-img"
+        loading="lazy"
+        decoding="async"
+        onLoad={() => setLoaded(true)}
+        alt=""
+      />
+    </div>
   );
 }
