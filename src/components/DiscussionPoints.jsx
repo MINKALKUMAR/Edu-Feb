@@ -340,4 +340,3 @@ const styles = {
   imgBox: { minWidth: "220px", height: "280px", borderRadius: "20px", overflow: "hidden" },
   image: { width: "100%", height: "100%", objectFit: "cover", opacity: 0.8 },
 };
-
