@@ -214,6 +214,7 @@ import A15 from "../assets/PastPhotos/A15.JPG";
 import A16 from "../assets/PastPhotos/A16.JPG";
 import A17 from "../assets/PastPhotos/A17.JPG";
 import A18 from "../assets/PastPhotos/A18.JPG";
+import C from "../assets/PastPhotos/C.png";
 
 /**
  * PastGlimpses — LOCAL IMAGES (ZERO HANG)
