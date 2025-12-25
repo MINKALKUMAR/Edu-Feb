@@ -49,16 +49,46 @@ import Sanjay from "../assets/speakers/Sanjay.jpeg";
 /* ================= COMPONENT ================= */
 
 export default function DiscussionPoints() {
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+  const sectionRef = useRef(null);
+  const focusRef = useRef(null);
 
+  const [isMobile, setIsMobile] = useState(() => window.innerWidth <= 768);
+  const [visible, setVisible] = useState(false);
+  const [focusVisible, setFocusVisible] = useState(false);
+
+  /* ===== RESIZE (STABLE) ===== */
   useEffect(() => {
-    const resize = () => setIsMobile(window.innerWidth <= 768);
+    let t;
+    const resize = () => {
+      clearTimeout(t);
+      t = setTimeout(() => setIsMobile(window.innerWidth <= 768), 120);
+    };
     window.addEventListener("resize", resize);
     return () => window.removeEventListener("resize", resize);
   }, []);
 
+  /* ===== MAIN SECTION VISIBILITY ===== */
+  useEffect(() => {
+    const io = new IntersectionObserver(
+      ([e]) => setVisible(e.isIntersecting),
+      { threshold: 0.2 }
+    );
+    if (sectionRef.current) io.observe(sectionRef.current);
+    return () => io.disconnect();
+  }, []);
+
+  /* ===== FOCUS SECTOR VISIBILITY (NEW, SAFE) ===== */
+  useEffect(() => {
+    const io = new IntersectionObserver(
+      ([e]) => setFocusVisible(e.isIntersecting),
+      { threshold: 0.2 }
+    );
+    if (focusRef.current) io.observe(focusRef.current);
+    return () => io.disconnect();
+  }, []);
+
   return (
-    <section style={styles.wrapper}>
+    <section ref={sectionRef} style={styles.wrapper}>
       <div style={styles.parallaxBg} />
 
       <style>
@@ -67,10 +97,79 @@ export default function DiscussionPoints() {
             from { transform: translateX(0); }
             to { transform: translateX(-50%); }
           }
+
+          /* ===== FOCUS SECTOR ===== */
+          .focus-section {
+            padding: 80px 20px;
+          }
+
+          .focus-header {
+            text-align: center;
+            margin-bottom: 50px;
+          }
+
+          .focus-header h2 {
+            font-size: 48px;
+            font-weight: 800;
+            color: #fff;
+          }
+
+          .sector-scroll {
+            overflow: hidden;
+            padding: 30px 10px;
+          }
+
+          .sector-list {
+            display: flex;
+            gap: 20px;
+            width: max-content;
+            animation: scroll 25s linear infinite;
+          }
+
+          .sector-card {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            flex-shrink: 0;
+            transition: transform .3s ease;
+          }
+
+          .sector-card.large { width: 280px; height: 380px; }
+          .sector-card.small { width: 240px; height: 280px; }
+
+          .sector-card:hover { transform: scale(1.05); }
+
+          .sector-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+
+          .sector-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(174, 43, 43, 0.84), rgba(138, 30, 30, 0.47), transparent);
+          }
+
+          .sector-content {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            color: #fff;
+            font-weight: 700;
+          }
+
+          @media (max-width: 768px) {
+            .focus-header h2 { font-size: 32px; }
+            .sector-card.large { width: 220px; height: 300px; }
+            .sector-card.small { width: 180px; height: 240px; }
+          }
         `}
       </style>
 
       <div style={styles.content}>
+        {/* ===== SAME CONTENT AS BEFORE ===== */}
+
         <Section id="discussionpoints" title="Key Discussion Points">
           <div style={{ ...styles.grid, gridTemplateColumns: isMobile ? "1fr" : "repeat(2,1fr)" }}>
             {discussionPoints.map((p, i) => (
@@ -97,21 +196,47 @@ export default function DiscussionPoints() {
           <Marquee
             items={[Fintrex, Educore, WULogoWhite, LINGAYA, EducationFutureOne, ICTAcademy, KHASRAPAT]}
             type="logo"
+            play={!isMobile ? visible : true}
           />
+
         </Section>
 
         <Section id="past-speakers" title="Past Speakers">
           <Marquee
             items={[Anshu, Parvinder, Picheswar, Manoj, Manpreet, Sanjay]}
             type="image"
+            play={!isMobile ? visible : true}
           />
+
         </Section>
+
+        {/* ===== FOCUS SECTOR (UI UNCHANGED, ONLY PAUSE LOGIC) ===== */}
+        <section ref={focusRef} className="focus-section">
+          <div className="focus-header">
+            <h2>Focus Sector</h2>
+          </div>
+
+          <div className="sector-scroll">
+            <div
+              className="sector-list"
+              style={{ animationPlayState: focusVisible ? "running" : "paused" }}
+            >
+              {[...focusSectors, ...focusSectors].map((s, i) => (
+                <div key={i} className={`sector-card ${s.size}`}>
+                  <img src={s.image} alt={s.title} className="sector-image" loading="lazy" />
+                  <div className="sector-overlay" />
+                  <div className="sector-content">{s.title}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
       </div>
     </section>
   );
 }
 
-/* ================= HELPERS ================= */
+/* ================= HELPERS (UNCHANGED) ================= */
 
 function Section({ id, title, children }) {
   return (
@@ -128,7 +253,10 @@ function Strip({ title, description, index }) {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    const io = new IntersectionObserver(([e]) => e.isIntersecting && setVisible(true), { threshold: 0.4 });
+    const io = new IntersectionObserver(
+      ([e]) => e.isIntersecting && setVisible(true),
+      { threshold: 0.4 }
+    );
     if (ref.current) io.observe(ref.current);
     return () => io.disconnect();
   }, []);
@@ -137,8 +265,8 @@ function Strip({ title, description, index }) {
     window.innerWidth <= 768
       ? styles.fromBottom
       : index % 2 === 0
-      ? styles.fromLeft
-      : styles.fromRight;
+        ? styles.fromLeft
+        : styles.fromRight;
 
   return (
     <div ref={ref} style={{ ...styles.strip, ...(visible ? styles.visible : from) }}>
@@ -151,14 +279,14 @@ function Strip({ title, description, index }) {
   );
 }
 
-function Marquee({ items, type }) {
+function Marquee({ items, type, play }) {
   const list = [...items, ...items];
   return (
     <div style={styles.marquee}>
-      <div style={styles.track}>
+      <div style={{ ...styles.track, animationPlayState: play ? "running" : "paused" }}>
         {list.map((src, i) => (
           <div key={i} style={type === "logo" ? styles.logoBox : styles.imgBox}>
-            <img src={src} alt="" style={type === "logo" ? styles.logo : styles.image} />
+            <img src={src} alt="" loading="lazy" style={type === "logo" ? styles.logo : styles.image} />
           </div>
         ))}
       </div>
@@ -166,7 +294,20 @@ function Marquee({ items, type }) {
   );
 }
 
-/* ================= STYLES ================= */
+/* ================= FOCUS SECTOR DATA ================= */
+
+const focusSectors = [
+  { title: "Universities", image: "/university-students-in-graduation-ceremony.png", size: "large" },
+  { title: "Established Edtech", image: "/professionals-in-modern-office-discussing-educatio.png", size: "small" },
+  { title: "Corporate Catering", image: "/business-professionals-in-corporate-training-sessi.png", size: "large" },
+  { title: "Edutech", image: "/tech-professionals-working-on-educational-software.png", size: "small" },
+  { title: "Edtech Startup", image: "/young-entrepreneurs-in-startup-office-with-laptops.png", size: "large" },
+  { title: "Fashion & Design", image: "/fashion-design-students-working-on-creative-projec.png", size: "small" },
+  { title: "B-School", image: "/mba-students-in-business-school-classroom.png", size: "large" },
+  { title: "Established Edtech", image: "/professionals-in-modern-office-discussing-educatio.png", size: "small" },
+];
+
+/* ================= STYLES (UNCHANGED) ================= */
 
 const styles = {
   wrapper: { position: "relative", overflow: "hidden" },
@@ -180,7 +321,7 @@ const styles = {
   grid: { display: "grid", gap: "18px" },
   twoCol: { display: "grid", gap: "36px" },
 
-  strip: { display: "flex", gap: "14px", padding: "18px", borderRadius: "14px", background: "rgba(20,20,20,0.65)", border: "1px solid rgba(255,255,255,0.08)", transition: "all .6s ease",marginBottom: "12px" },
+  strip: { display: "flex", gap: "14px", padding: "18px", borderRadius: "14px", background: "rgba(20,20,20,0.65)", border: "1px solid rgba(255,255,255,0.08)", transition: "all .6s ease", marginBottom: "12px" },
   dot: { width: "9px", height: "9px", background: "var(--color-red)", borderRadius: "50%", marginTop: "7px" },
   stripTitle: { fontWeight: 700, color: "#fff" },
   stripDesc: { color: "#cfcfcf", fontSize: ".92rem" },
@@ -199,3 +340,4 @@ const styles = {
   imgBox: { minWidth: "220px", height: "280px", borderRadius: "20px", overflow: "hidden" },
   image: { width: "100%", height: "100%", objectFit: "cover", opacity: 0.8 },
 };
+

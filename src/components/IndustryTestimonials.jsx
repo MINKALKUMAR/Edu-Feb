@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef, useState } from "react";
 
 const testimonials = [
@@ -7,21 +6,30 @@ const testimonials = [
     role: "Pro Vice Chancellor, Shobhit Deemed University",
     text:
       "NEP 2020 is transforming Indian education, with Artificial Intelligence playing a key role in achieving global standards and future readiness.",
-    videoUrl: "https://video.edutomorrow.in/Jayanand.mp4",
+    video: {
+      low: "https://video.edutomorrow.in/Jayanand_360.mp4",
+      high: "https://video.edutomorrow.in/Jayanand.mp4",
+    },
   },
   {
     name: "Prof. (Dr.) Manpreet Singh Manna",
     role: "Vice-Chancellor, Chandigarh University",
     text:
       "The future of education lies in technology-driven learning, quality enhancement, and global collaboration.",
-    videoUrl: "https://video.edutomorrow.in/Manpreet.mp4",
+    video: {
+      low: "https://video.edutomorrow.in/Manpreet_360.mp4",
+      high: "https://video.edutomorrow.in/Manpreet.mp4",
+    },
   },
   {
     name: "Ms. Anu Kaushal",
     role: "Director – Training & Communication, Lamboran Tech Skills University",
     text:
       "AI is embraced not just as a subject but as a tool and a lifestyle, combined with pedagogy, andragogy, and heutagogy.",
-    videoUrl: "https://video.edutomorrow.in/Anu.mp4",
+    video: {
+      low: "https://video.edutomorrow.in/Anu_360.mp4",
+      high: "https://video.edutomorrow.in/Anu.mp4",
+    },
   },
 ];
 
@@ -29,72 +37,59 @@ export default function IndustryTestimonials() {
   const [current, setCurrent] = useState(0);
   const [muted, setMuted] = useState(true);
   const [playing, setPlaying] = useState(false);
+  const [src, setSrc] = useState("");
 
   const videoRef = useRef(null);
   const sectionRef = useRef(null);
-  const pauseTimer = useRef(null);
 
-  /* Reset state on slide change */
+  /* ================= NETWORK AWARE VIDEO ================= */
   useEffect(() => {
-    setMuted(true);
-    setPlaying(false);
+    const conn = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+    const slow =
+      conn?.effectiveType?.includes("2g") ||
+      conn?.effectiveType?.includes("3g") ||
+      conn?.downlink < 2;
+
+    setSrc(slow ? testimonials[current].video.low : testimonials[current].video.high);
   }, [current]);
 
-  /* ▶️ Autoplay ONLY when visible (smooth & debounced) */
+  /* ================= VISIBILITY AUTOPLAY ================= */
   useEffect(() => {
     const video = videoRef.current;
     if (!video || !sectionRef.current) return;
 
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          clearTimeout(pauseTimer.current);
-
-          if (video.paused) {
-            video.play().then(() => setPlaying(true)).catch(() => {});
-          }
+    const obs = new IntersectionObserver(
+      ([e]) => {
+        if (e.isIntersecting) {
+          video.play().then(() => setPlaying(true)).catch(() => {});
         } else {
-          // debounce pause to avoid flicker
-          pauseTimer.current = setTimeout(() => {
-            video.pause();
-            setPlaying(false);
-          }, 400);
+          video.pause();
+          setPlaying(false);
         }
       },
-      { threshold: 0.75 } // less sensitive = smoother
+      { threshold: 0.6 }
     );
 
-    observer.observe(sectionRef.current);
-
-    return () => {
-      clearTimeout(pauseTimer.current);
-      observer.disconnect();
-    };
-  }, [current]);
-
-  const next = () =>
-    setCurrent((p) => (p + 1) % testimonials.length);
-
-  const prev = () =>
-    setCurrent((p) => (p - 1 + testimonials.length) % testimonials.length);
-
-  const toggleMute = () => {
-    if (!videoRef.current) return;
-    videoRef.current.muted = !videoRef.current.muted;
-    setMuted(videoRef.current.muted);
-  };
+    obs.observe(sectionRef.current);
+    return () => obs.disconnect();
+  }, [src]);
 
   const togglePlay = () => {
-    if (!videoRef.current) return;
-
-    if (videoRef.current.paused) {
-      videoRef.current.play();
-      setPlaying(true);
-    } else {
-      videoRef.current.pause();
-      setPlaying(false);
-    }
+    const v = videoRef.current;
+    if (!v) return;
+    v.paused ? v.play() : v.pause();
+    setPlaying(!v.paused);
   };
+
+  const toggleMute = () => {
+    const v = videoRef.current;
+    if (!v) return;
+    v.muted = !v.muted;
+    setMuted(v.muted);
+  };
+
+  const next = () => setCurrent((p) => (p + 1) % testimonials.length);
+  const prev = () => setCurrent((p) => (p - 1 + testimonials.length) % testimonials.length);
 
   const t = testimonials[current];
 
@@ -115,14 +110,14 @@ export default function IndustryTestimonials() {
 
         <div className="video-wrap">
           <video
-            key={t.videoUrl}
             ref={videoRef}
-            playsInline
+            key={src}
+            src={src}
             muted
-            preload="auto"   // 🔥 IMPORTANT CHANGE
-          >
-            <source src={t.videoUrl} type="video/mp4" />
-          </video>
+            playsInline
+            preload="metadata"
+            style={{ willChange: "transform" }}
+          />
 
           <button className="video-btn center" onClick={togglePlay}>
             {playing ? "❚❚" : "▶"}
@@ -134,16 +129,14 @@ export default function IndustryTestimonials() {
         </div>
 
         <div className="text-box">
-          <p style={{color:"#cccc"}}>"{t.text}"</p>
+          <p style={{ color: "#ccc" }}>"{t.text}"</p>
           <h4>{t.name}</h4>
           <span>{t.role}</span>
         </div>
       </div>
 
-      {/* CSS UNCHANGED */}
       <style>{`
         .it-section {
-          position: relative;
           min-height: 100vh;
           padding: 70px 16px;
           display: flex;
@@ -152,37 +145,37 @@ export default function IndustryTestimonials() {
           justify-content: center;
           background: var(--bg-main);
           overflow: hidden;
+          position: relative;
         }
 
-        .circles-bg { position: absolute; inset: -20%; z-index: 0; }
-        .circle { position: absolute; border-radius: 50%; border: 14px solid rgba(225,6,0,0.25); }
-        .c1 { width: 140%; height: 140%; animation: spinCW 60s linear infinite; }
-        .c2 { width: 110%; height: 110%; animation: spinCCW 90s linear infinite; }
-        .c3 { width: 80%; height: 80%; animation: spinCW 45s linear infinite; }
-        .c4 { width: 50%; height: 50%; animation: spinCCW 30s linear infinite; }
+        .circles-bg { position:absolute; inset:-20%; }
+        .circle { border:14px solid rgba(225,6,0,.25); border-radius:50%; position:absolute; }
+        .c1{width:140%;height:140%;animation:spinCW 60s linear infinite;}
+        .c2{width:110%;height:110%;animation:spinCCW 90s linear infinite;}
+        .c3{width:80%;height:80%;animation:spinCW 45s linear infinite;}
+        .c4{width:50%;height:50%;animation:spinCCW 30s linear infinite;}
 
-        @keyframes spinCW { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-        @keyframes spinCCW { from { transform: rotate(360deg); } to { transform: rotate(0deg); } }
+        @keyframes spinCW{to{transform:rotate(360deg)}}
+        @keyframes spinCCW{to{transform:rotate(-360deg)}}
 
-        .it-heading { font-size: clamp(1.8rem, 4vw, 2.6rem); margin-bottom: 36px; z-index: 2; color: var(--color-white); }
+        .it-heading{color:#fff;margin-bottom:36px;z-index:2}
 
-        .it-card { position: relative; z-index: 2; max-width: 900px; background: var(--bg-gradient); border-radius: 18px; padding: 18px; }
+        .it-card{max-width:900px;background:var(--bg-gradient);border-radius:18px;padding:18px;position:relative;z-index:2}
 
-        .video-wrap { position: relative; aspect-ratio: 16/9; border-radius: 14px; overflow: hidden; margin-bottom: 16px; }
-        video { width: 100%; height: 100%; object-fit: cover; }
+        .video-wrap{aspect-ratio:16/9;border-radius:14px;overflow:hidden;position:relative;margin-bottom:16px}
+        video{width:100%;height:100%;object-fit:cover}
 
-        .video-btn { position: absolute; background: rgba(0,0,0,0.6); color: #fff; border: none; border-radius: 50%; width: 44px; height: 44px; cursor: pointer; z-index: 5; }
-        .video-btn.center { top: 50%; left: 50%; transform: translate(-50%, -50%); }
-        .video-btn.sound { bottom: 12px; right: 12px; }
+        .video-btn{position:absolute;width:44px;height:44px;border-radius:50%;background:rgba(0,0,0,.6);color:#fff;border:none;cursor:pointer}
+        .video-btn.center{top:50%;left:50%;transform:translate(-50%,-50%)}
+        .video-btn.sound{bottom:12px;right:12px}
 
-        .text-box { text-align: center; }
-        .text-box span { color: var(--color-red); }
+        .arrow{position:absolute;top:50%;transform:translateY(-50%);background:var(--color-red);color:#fff;border:none;border-radius:50%;width:42px;height:42px;cursor:pointer;z-index:6}
+        .arrow.left{left:-10px}
+        .arrow.right{right:-10px}
 
-        .arrow { position: absolute; top: 50%; transform: translateY(-50%); z-index: 6; width: 42px; height: 42px; border-radius: 50%; background: var(--color-red); color: #fff; border: none; cursor: pointer; }
-        .arrow.left { left: -10px; }
-        .arrow.right { right: -10px; }
+        .text-box{text-align:center}
+        .text-box span{color:var(--color-red)}
       `}</style>
     </section>
   );
 }
-

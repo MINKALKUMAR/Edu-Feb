@@ -1,11 +1,34 @@
+
 // import React, { useEffect, useMemo, useRef, useState } from "react";
 
+// /* ===== LOCAL IMAGES ===== */
+// import A1 from "../assets/PastPhotos/A1.JPG";
+// import A2 from "../assets/PastPhotos/A2.JPG";
+// import A3 from "../assets/PastPhotos/A3.JPG";
+// import A4 from "../assets/PastPhotos/A4.JPG";
+// import A5 from "../assets/PastPhotos/A5.JPG";
+// import A6 from "../assets/PastPhotos/A6.JPG";
+// import A7 from "../assets/PastPhotos/A7.JPG";
+// import A8 from "../assets/PastPhotos/A8.JPG";
+// import A9 from "../assets/PastPhotos/A9.JPG";
+// import A10 from "../assets/PastPhotos/A10.JPG";
+// import A11 from "../assets/PastPhotos/A11.JPG";
+// import A12 from "../assets/PastPhotos/A12.JPG";
+// import A13 from "../assets/PastPhotos/A13.JPG";
+// import A14 from "../assets/PastPhotos/A14.JPG";
+// import A15 from "../assets/PastPhotos/A15.JPG";
+// import A16 from "../assets/PastPhotos/A16.JPG";
+// import A17 from "../assets/PastPhotos/A17.JPG";
+// import A18 from "../assets/PastPhotos/A18.JPG";
+// import C from "../assets/PastPhotos/C.png";
+
 // /**
-//  * PastGlimpses — Facebook-style shimmer loader
-//  * ✔ Individual image loading
-//  * ✔ Skeleton shimmer
-//  * ✔ Fade-in images
-//  * ✔ ZERO hang
+//  * PastGlimpses — LOCAL IMAGES (ZERO HANG)
+//  * ✔ 18 local images
+//  * ✔ 3 strips (6 each)
+//  * ✔ Shimmer loader
+//  * ✔ Fade-in
+//  * ✔ Idle + Intersection start
 //  */
 
 // export default function PastGlimpses() {
@@ -23,7 +46,7 @@
 //     return () => mq.removeEventListener("change", update);
 //   }, []);
 
-//   /* ========= OBSERVE ========= */
+//   /* ========= OBSERVER ========= */
 //   useEffect(() => {
 //     const obs = new IntersectionObserver(
 //       ([e]) => e.isIntersecting && setVisible(true),
@@ -42,25 +65,17 @@
 
 //   /* ========= IMAGES ========= */
 //   const images = [
-//     "https://res.cloudinary.com/djevhndbo/image/upload/v1766414786/B_4_p7nhua.jpg",
-//     "https://res.cloudinary.com/djevhndbo/image/upload/v1766414787/B_11_h8k2b6.jpg",
-//     "https://res.cloudinary.com/djevhndbo/image/upload/v1766414787/B_9_ukmdug.jpg",
-//     "https://res.cloudinary.com/djevhndbo/image/upload/v1766414788/B_3_t5wanw.jpg",
-//     "https://res.cloudinary.com/djevhndbo/image/upload/v1766414788/B_5_vqz3cj.jpg",
-//     "https://res.cloudinary.com/djevhndbo/image/upload/v1766414788/B_8_m9drkt.jpg",
-//     "https://res.cloudinary.com/djevhndbo/image/upload/v1766414788/B_2_iaxbod.jpg",
-//     "https://res.cloudinary.com/djevhndbo/image/upload/v1766414789/B_10_ayhaam.jpg",
-//     "https://res.cloudinary.com/djevhndbo/image/upload/v1766414790/B_1_rc3uk8.jpg",
-//     "https://res.cloudinary.com/djevhndbo/image/upload/v1766414866/A_8_h1viuy.jpg",
-//     "https://res.cloudinary.com/djevhndbo/image/upload/v1766414873/A_3_g8x4v2.jpg",
-//     "https://res.cloudinary.com/djevhndbo/image/upload/v1766414873/A_5_dahvlb.jpg",
-//     "https://res.cloudinary.com/djevhndbo/image/upload/v1766414879/A_4_hz2tni.jpg",
-//     "https://res.cloudinary.com/djevhndbo/image/upload/v1766414883/A_1_quybjd.jpg",
-//     "https://res.cloudinary.com/djevhndbo/image/upload/v1766414887/A_2_tad9je.jpg",
+//     A1, A2, A3, A4, A5, A6,
+//     A7, A8, A9, A10, A11, A12,
+//     A13, A14, A15, A16, A17, A18,C
 //   ];
 
 //   const strips = useMemo(
-//     () => [images.slice(0, 5), images.slice(5, 10), images.slice(10, 15)],
+//     () => [
+//       images.slice(0, 6),
+//       images.slice(6, 12),
+//       images.slice(12, 19),
+//     ],
 //     []
 //   );
 
@@ -95,14 +110,13 @@
 //         .paused { animation-play-state: paused; }
 
 //         @keyframes pgLeft {
-//           to { transform: translate3d(-${(imgW + gap) * 5}px,0,0); }
+//           to { transform: translate3d(-${(imgW + gap) * 6}px,0,0); }
 //         }
 //         @keyframes pgRight {
-//           from { transform: translate3d(-${(imgW + gap) * 5}px,0,0); }
+//           from { transform: translate3d(-${(imgW + gap) * 6}px,0,0); }
 //           to { transform: translate3d(0,0,0); }
 //         }
 
-//         /* ===== BOX ===== */
 //         .pg-box {
 //           position: relative;
 //           width: ${imgW}px;
@@ -113,14 +127,13 @@
 //           flex-shrink: 0;
 //         }
 
-//         /* ===== SHIMMER ===== */
 //         .pg-box::before {
 //           content: "";
 //           position: absolute;
 //           inset: 0;
 //           background: linear-gradient(
 //             90deg,
-//             #e4e6eb 0%,
+//             #ebe4e4ff 0%,
 //             #f0f2f5 40%,
 //             #e4e6eb 80%
 //           );
@@ -129,6 +142,7 @@
 //         }
 
 //         .loaded::before {
+//           animation: none;
 //           display: none;
 //         }
 
@@ -136,7 +150,6 @@
 //           100% { transform: translateX(100%); }
 //         }
 
-//         /* ===== IMAGE ===== */
 //         .pg-img {
 //           width: 100%;
 //           height: 100%;
@@ -162,7 +175,7 @@
 //                 idx % 2 ? "pg-right" : "pg-left"
 //               } ${!ready ? "paused" : ""}`}
 //             >
-//               {[...imgs, ...imgs].map((src, i) => (
+//               {(isMobile ? imgs : [...imgs, ...imgs]).map((src, i) => (
 //                 <ImageBox key={i} src={src} />
 //               ))}
 //             </div>
@@ -173,7 +186,7 @@
 //   );
 // }
 
-// /* ===== IMAGE BOX COMPONENT ===== */
+// /* ===== IMAGE BOX ===== */
 // function ImageBox({ src }) {
 //   const [loaded, setLoaded] = useState(false);
 
@@ -190,6 +203,16 @@
 //     </div>
 //   );
 // }
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -217,16 +240,17 @@ import A18 from "../assets/PastPhotos/A18.JPG";
 import C from "../assets/PastPhotos/C.png";
 
 /**
- * PastGlimpses — LOCAL IMAGES (ZERO HANG)
- * ✔ 18 local images
- * ✔ 3 strips (6 each)
- * ✔ Shimmer loader
- * ✔ Fade-in
- * ✔ Idle + Intersection start
+ * PastGlimpses — PERFORMANCE SAFE (ORIGINAL LOOK)
+ * ✔ Same animation
+ * ✔ Same shimmer
+ * ✔ Same layout
+ * ✔ No hang
  */
 
 export default function PastGlimpses() {
   const sectionRef = useRef(null);
+  const startedRef = useRef(false);
+
   const [isMobile, setIsMobile] = useState(false);
   const [visible, setVisible] = useState(false);
   const [ready, setReady] = useState(false);
@@ -240,28 +264,42 @@ export default function PastGlimpses() {
     return () => mq.removeEventListener("change", update);
   }, []);
 
-  /* ========= OBSERVER ========= */
+  /* ========= VISIBILITY ========= */
   useEffect(() => {
-    const obs = new IntersectionObserver(
-      ([e]) => e.isIntersecting && setVisible(true),
-      { threshold: 0.2 }
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !startedRef.current) {
+          startedRef.current = true;
+          setVisible(true);
+        }
+      },
+      { threshold: 0.25 }
     );
-    sectionRef.current && obs.observe(sectionRef.current);
-    return () => obs.disconnect();
+
+    if (sectionRef.current) observer.observe(sectionRef.current);
+    return () => observer.disconnect();
   }, []);
 
   /* ========= IDLE START ========= */
   useEffect(() => {
     if (!visible) return;
-    const id = requestIdleCallback(() => setReady(true));
-    return () => cancelIdleCallback(id);
+
+    const idleId =
+      "requestIdleCallback" in window
+        ? requestIdleCallback(() => setReady(true))
+        : setTimeout(() => setReady(true), 200);
+
+    return () => {
+      if ("cancelIdleCallback" in window) cancelIdleCallback(idleId);
+      else clearTimeout(idleId);
+    };
   }, [visible]);
 
   /* ========= IMAGES ========= */
   const images = [
     A1, A2, A3, A4, A5, A6,
     A7, A8, A9, A10, A11, A12,
-    A13, A14, A15, A16, A17, A18,C
+    A13, A14, A15, A16, A17, A18, C,
   ];
 
   const strips = useMemo(
@@ -306,6 +344,7 @@ export default function PastGlimpses() {
         @keyframes pgLeft {
           to { transform: translate3d(-${(imgW + gap) * 6}px,0,0); }
         }
+
         @keyframes pgRight {
           from { transform: translate3d(-${(imgW + gap) * 6}px,0,0); }
           to { transform: translate3d(0,0,0); }
