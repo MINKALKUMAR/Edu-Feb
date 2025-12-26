@@ -95,8 +95,8 @@ function About() {
         {/* <span style={styles.badge}>About the Conclave</span> */}
 
         <p style={styles.paragraph}>
-          The <strong>Education Tomorrow Conclave & Awards 2025</strong>,
-          scheduled for December in New Delhi, will bring together visionary
+          The <strong>Education Tomorrow Conclave & Awards 2026</strong>,
+          scheduled for February in New Chandigarh, will bring together visionary
           leaders from academia, industry, and government to reimagine the
           future of learning in an AI-driven world.
         </p>

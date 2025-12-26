@@ -2,6 +2,8 @@
 // src/components/ScrollNavbar.jsx
 import { useState, useEffect } from "react";
 import logo from "../assets/ShortLogo.png";
+import { useNavigate } from "react-router-dom";
+
 
 function ScrollNavbar() {
   const [show, setShow] = useState(false);
@@ -13,6 +15,9 @@ function ScrollNavbar() {
   const [hoverItem, setHoverItem] = useState(null);
   const [hoverBtn, setHoverBtn] = useState(false);
   const [hoverHam, setHoverHam] = useState(false);
+
+  const navigate = useNavigate();
+
 
   const menuItems = [
     "Home",
@@ -265,6 +270,7 @@ function ScrollNavbar() {
             style={glowButton(hoverBtn)}
             onMouseEnter={() => setHoverBtn(true)}
             onMouseLeave={() => setHoverBtn(false)}
+            onClick={() => navigate("/awards")}
           >
             Awards Nomination
           </button>
@@ -327,7 +333,10 @@ function ScrollNavbar() {
             </>
           )}
 
-          <button style={glowButton(false)}>Awards Nomination</button>
+          <button style={glowButton(false)} onClick={() => {
+            setOpen(false);
+            navigate("/awards");
+          }}  >Awards Nomination</button>
         </div>
       )}
     </div>

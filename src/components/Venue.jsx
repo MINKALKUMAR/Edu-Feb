@@ -6,7 +6,7 @@ function Venue() {
 
   /* 🔁 LOCATION DATA */
   const venue = {
-    name: "Park Plaza Chandigarh Zirakpur",
+    name: "Park Plaza",
     address: "Zirakpur, Chandigarh, India",
     image: VenueImage,
     map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3432.8609370970867!2d76.82252919999999!3d30.637876499999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390feb66c595c28b%3A0x45e2bcd3cdc71c1c!2sPark%20Plaza%20Chandigarh%20Zirakpur!5e0!3m2!1sen!2sin!4v1756630490296!5m2!1sen!2sin",
@@ -38,7 +38,7 @@ function Venue() {
   const styles = {
     section: {
       width: "100%",
-      background: "var(--bg-gradient)",
+      // background: "var(--bg-gradient)",
       padding: "90px 20px",
     },
     heading: {
@@ -63,7 +63,7 @@ function Venue() {
       gap: "28px",
     },
     card: {
-      background: "var(--bg-card)",
+      background: "#85000069",
       borderRadius: "18px",
       padding: "14px",
       border: "1px solid var(--border-color)",
@@ -113,9 +113,46 @@ function Venue() {
           50% { box-shadow: 0 0 14px rgba(225,6,0,0.9); }
           100% { box-shadow: 0 0 6px rgba(225,6,0,0.4); }
         }
-      `}</style>
 
-      <section style={styles.section} id="venue">
+  :root {
+    --bg-main: #000000;
+    --grid-color: 225, 6, 0;
+    --grid-line-opacity: 0.35;
+    --grid-glow-opacity: 0.25;
+    --grid-size: 40px;
+  }
+
+  .grid-bg {
+    background:
+      linear-gradient(
+        90deg,
+        rgba(var(--grid-color), var(--grid-line-opacity)) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        0deg,
+        rgba(var(--grid-color), var(--grid-line-opacity)) 1px,
+        transparent 1px
+      ),
+      radial-gradient(
+        circle at center,
+        rgba(var(--grid-color), var(--grid-glow-opacity)),
+        transparent 60%
+      ),
+      var(--bg-main);
+
+    background-size: var(--grid-size) var(--grid-size);
+    background-position: center;
+  }
+
+  .grid-bg.soft {
+    --grid-line-opacity: 0.18;
+    --grid-glow-opacity: 0.12;
+    --grid-size: 60px;
+  }
+`}</style>
+
+      <section style={styles.section} id="venue" className="grid-bg">
         <h2 style={styles.heading}>Venue</h2>
         <div style={styles.underline} />
 
