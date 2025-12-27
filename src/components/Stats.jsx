@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 
 /* ====== STATS DATA ====== */
 const STATS = [
-  { label: "Speakers", value: 35, suffix: "+" },
+  { label: "Speakers", value: 40, suffix: "+" },
   { label: "Delegates", value: 200, suffix: "+" },
   { label: "Exhibitor", value: 20, suffix: "+" },
   { label: "Hours of Exclusive Networking", value: 9, suffix: "+" },

@@ -397,7 +397,7 @@ export default function PastGlimpses() {
       `}</style>
 
       <section ref={sectionRef} className="pg-section">
-        <h2 style={{ fontSize: isMobile ? "2rem" : "2.8rem", marginBottom: 30 }}>
+        <h2 style={{ fontSize: isMobile ? "2rem" : "2.8rem", marginBottom: 30 , color: "#FFF7F1"}}>
           Past Glimpses
         </h2>
 

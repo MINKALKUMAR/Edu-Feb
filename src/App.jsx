@@ -6,6 +6,7 @@ import "./App.css";
 import Home from "./components/Home";
 import Navbar from "./components/Navbar";
 import ScrollNavbar from "./components/ScrollNavbar";
+import ScrollToTop from "./components/ScrollToTop";
 
 const Awards = lazy(() => import("./components/Awards"));
 
@@ -21,6 +22,7 @@ function Layout() {
 
       <div className="content-container">
         <Suspense fallback={<div style={{ padding: "120px" }}>Loading...</div>}>
+          <ScrollToTop />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/awards" element={<Awards />} />
@@ -38,5 +40,4 @@ function App() {
     </Router>
   );
 }
-
 export default App;

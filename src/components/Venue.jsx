@@ -6,8 +6,8 @@ function Venue() {
 
   /* 🔁 LOCATION DATA */
   const venue = {
-    name: "Park Plaza",
-    address: "Zirakpur, Chandigarh, India",
+    name: "Park Plaza Zirakpur, Chandigarh, India",
+    address: "",
     image: VenueImage,
     map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3432.8609370970867!2d76.82252919999999!3d30.637876499999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390feb66c595c28b%3A0x45e2bcd3cdc71c1c!2sPark%20Plaza%20Chandigarh%20Zirakpur!5e0!3m2!1sen!2sin!4v1756630490296!5m2!1sen!2sin",
 

@@ -151,7 +151,7 @@ const HeroSection = () => {
                                 color: "var(--color-white)",
                             }}
                         >
-                            The Education Tomorrow Conclave & Awards 2025 is a prestigious
+                            The Education Tomorrow Conclave & Awards 2026 is a prestigious
                             platform dedicated to recognizing and celebrating the trailblazers
                             who are shaping the future of education.
                         </p>
@@ -337,292 +337,227 @@ const HeroSection = () => {
         );
     };
 
-    const AwardCategories = () => {
-        const categories = [
-            {
-                title: "Higher Education Awards",
-                items: [
-                    "Excellence in Student Outreach, Engagement and Digital Innovation 2025",
-                    "Excellence in Digital Education and Innovation 2025",
-                    "Most Promising University/Institute in R&D (Research & Development) 2025",
-                    "Remarkable Contribution in Online Learning and Digital Practices 2025",
-                    "Innovation in Higher Education and Skills Enhancement 2025",
-                    "Outstanding University/Institute in Learning Initiative and Skill Development 2025",
-                    "Outstanding University/Institute in Innovative Teaching and Learning Practices 2025",
-                    "Most Impactful University/Institute in Digital Infrastructure 2025",
-                    "Most Emerging University/Engineering Institute 2025",
-                    "Outstanding University/Institute with excellent infrastructure and Green Campus Initiative 2025",
-                    "Outstanding University/Institute in Digital Innovation, Technology and Best Practices 2025",
-                    "CSR Excellence in Higher Education 2025",
-                    "Most Impactful Contribution for Global Outreach and Exchange Program 2025",
-                    "Most Innovative University/Institute in Global Collaboration through Digital Learning 2025",
-                    "Most Emerging Startup University 2025",
-                    "Remarkable Contribution in Curriculum Development and Online Teaching 2025",
-                    "Most Promising University/Institute in Digital Transformation 2025",
-                    "Most Promising B-School of the Year 2025",
-                    "Most Promising Corporate-Governed University 2025",
-                    "Innovative Practices for Academic Excellence in Higher Education",
-                    "Outstanding Institute/University in Smart Class Initiative 2025",
-                    "Outstanding University in Training & Placements 2025",
-                    "Most Emerging University/Institute in India",
-                    "Most Promising University in Curriculum Design and Development 2025",
-                    "E-campus Award for the year 2025",
-                    "Remarkable Contribution in Distance Learning Education",
-                    "Most Promising Medical Institute/University for the year 2025",
-                    "Most Promising Institute/University in India",
-                    "Outstanding Engineering Institute for Student Outreach and Global Exposure",
-                    "Most Promising Engineering Institute in India",
-                    "Outstanding Institute with Best Infrastructure for the year 2025",
-                ],
-            },
-            {
-                title: "Individual Leadership Awards",
-                items: [
-                    "Iconic Leadership in Higher Education 2025",
-                    "Outstanding Leadership in Higher Education 2025",
-                    "Outstanding Contribution in Online Education and Pedagogy 2025",
-                    "Outstanding Teaching Excellence Award 2025",
-                    "Excellent Digital Educator Award of the year 2025",
-                    "Excellence in Innovative Teaching & Learning Practices 2025",
-                    "Outstanding Research Scholar of the year 2025",
-                    "Emerging Leader in Higher Education 2025",
-                    "Entrepreneurship Award in Higher Education 2025",
-                    "Women Entrepreneurship Award in Higher Education 2025",
-                    "Outstanding Vice Chancellor of the year 2025",
-                    "Early Childhood Educator of the Year",
-                    "Pre-School Director of the Year",
-                    "Innovative Pre-School Leader",
-                    "Principal of the Year",
-                    "Excellence in Inclusive Education Leadership",
-                    "STEM Educator of the Year",
-                    "Dean of the Year",
-                    "University Chancellor/Vice Chancellor of the Year",
-                    "Innovative School Leader",
-                    "Outstanding Higher Education Administrator",
-                    "Best Higher Education Innovator",
-                    "EdTech Innovator of the Year",
-                    "EdTech Founder of the Year",
-                    "EdTech Thought Leader Award",
-                    "Best Educator in Online Learning",
-                    "Outstanding Women in Business Leadership",
-                    "Innovative Entrepreneur of the Year",
-                    "Business Leader of the Year",
-                    "Best Digital Transformation Leader",
-                    "Business Growth Leader of the Year",
-                ],
-            },
-            {
-                title: "EdTech Awards",
-                items: [
-                    "Leading E-learning Platform 2025",
-                    "Outstanding Tech Solution Provider for Higher Education 2025",
-                    "Outstanding Tech Solution Provider for Schools 2025",
-                    "Most Promising Assessment Solution Provider of the Year 2025",
-                    "Outstanding Smart Class Solution Provider of the Year 2025",
-                    "Leading ERP Solution Provider of the Year 2025",
-                    "Leading Education Finance Company of the Year 2025",
-                    "Outstanding Contribution to Education Financing in India 2025",
-                    "Most Trusted Education Loan Provider of the Year 2025",
-                    "Most Preferred Financial Partner for Students 2025",
-                    "Excellence in Customer - Centric Education Loan Services 2025",
-                    "Outstanding Digital Education Platform Provider of the Year 2025",
-                    "Leading School Security Solution Provider of the Year 2025",
-                    "Most Promising Video Conferencing Solution Provider of the Year 2025",
-                    "Excellence in Multi-Language Content Provider of the Year 2025",
-                    "Outstanding Admission Solution Provider of the Year 2025",
-                    "Most Promising AR-VR Solution Provider of the Year 2025",
-                    "Outstanding Innovation in AI-ML 2025",
-                    "Outstanding Payment Solution Provider of the Year 2025",
-                    "Leading Display Solution Provider of the Year 2025",
-                    "Most Promising Hybrid Solution Provider of the Year 2025",
-                    "Innovative Training Provider to Working Professionals 2025",
-                    "Innovative Digital Payment Solution Provider of the Year 2025",
-                    "Most Promising LMS Provider of the Year 2025",
-                    "Most Immersive Learning Product of the Year",
-                    "Best EdTech Company of the Year",
-                    "EdTech Startup of the Year",
-                    "Best EdTech Solution of the Year",
-                    "Best Cyber Privacy/Security Solution in Education",
-                    "Best Robotics Solution of the Year",
-                    "Best Classroom Tech Solution of the Year",
-                    "Best Test Prep Solution of the Year",
-                    "Emerging Technology Solution",
-                    "Best Learning Mobile App",
-                    "Most Effective Use of EdTech Tools",
-                ],
-            },
-            {
-                title: "School Education Awards",
-                items: [
-                    "Best Tech Savvy School of the Year",
-                    "Best Technically Advanced School Chain of the Year",
-                    "Best Standalone School of the Year",
-                    "School with Best IT Infrastructure",
-                    "Innovation for Curriculum Award",
-                    "Educational Excellence Award",
-                    "Best School in Management System of the Year",
-                    "Most Innovative School of the Year",
-                    "Best E-learning Methodology School of the Year",
-                    "Most Progressive School of the Year",
-                    "Best School for Futuristic Education",
-                    "Most Inspirational School Award",
-                ],
-            },
-            {
-                title: "Preschool Education Awards",
-                items: [
-                    "Best Preschool Chain of the Year",
-                    "Best Standalone Preschool of the Year",
-                    "Innovation for Curriculum Award",
-                    "Innovation in Preschool Infrastructure",
-                    "Best Use of Technology in Preschool",
-                    "Effective Implementation & Integration of ICT",
-                ],
-            },
-        ];
 
-        return (
-            <section
-                className="section grid-bg"
-                style={{
-                    padding: "80px 20px",
-                    width: "100%",
-                    //   background: "var(--bg-gradient)",
-                }}
-            >
-                <div
-                    className="container"
-                    style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 8px" }}
-                >
-                    <h2
-                        className="section-title"
-                        style={{
-                            textAlign: "center",
-                            fontSize: "2.2rem",
-                            fontWeight: 800,
-                            marginBottom: "0.5rem",
-                            color: "var(--color-white)",
-                        }}
-                    >
-                        Award Categories
-                    </h2>
-                    {/* <p
-            className="section-subtitle"
-            style={{
-              textAlign: "center",
-              fontSize: "1.05rem",
-              color: "#b0c4de",
-              margin: "0 auto 2rem",
-              maxWidth: "600px",
-            }}
-          >
-            Recognizing excellence across multiple domains of education
-          </p> */}
-                    <div
-                        className="divider"
-                        style={{
-                            width: "80px",
-                            height: "4px",
-                            background: "var(--color-red)",
-                            margin: "0 auto 2rem",
-                            borderRadius: "2px",
-                        }}
-                    />
-                    <div
-                        className="category-grid"
-                        style={{
-                            display: "grid",
-                            gridTemplateColumns: "repeat(auto-fit, minmax(311px, 1fr))",
-                            gap: "1.5rem",
-                        }}
-                    >
-                        {categories.map((category, idx) => (
+const AwardCategories = () => {
+    const [copiedIndex, setCopiedIndex] = useState(null);
+
+    const categories = [
+        {
+            title: "Higher Education Awards",
+            items: [
+                "Excellence in Student Outreach, Engagement and Digital Innovation 2026",
+                "Excellence in Digital Education and Innovation 2026",
+                "Most Promising University/Institute in R&D (Research & Development) 2026",
+                "Remarkable Contribution in Online Learning and Digital Practices 2026",
+                "Innovation in Higher Education and Skills Enhancement 2026",
+                "Outstanding University/Institute in Learning Initiative and Skill Development 2026",
+                "Outstanding University/Institute in Innovative Teaching and Learning Practices 2026",
+                "Most Impactful University/Institute in Digital Infrastructure 2026",
+                "Most Emerging University/Engineering Institute 2026",
+                "Outstanding University/Institute with excellent infrastructure and Green Campus Initiative 2026",
+                "Outstanding University/Institute in Digital Innovation, Technology and Best Practices 2026",
+                "CSR Excellence in Higher Education 2026",
+                "Most Impactful Contribution for Global Outreach and Exchange Program 2026",
+                "Most Innovative University/Institute in Global Collaboration through Digital Learning 2026",
+                "Most Emerging Startup University 2026",
+                "Remarkable Contribution in Curriculum Development and Online Teaching 2026",
+                "Most Promising University/Institute in Digital Transformation 2026",
+                "Most Promising B-School of the Year 2026",
+                "Most Promising Corporate-Governed University 2026",
+                "Innovative Practices for Academic Excellence in Higher Education",
+                "Outstanding Institute/University in Smart Class Initiative 2026",
+                "Outstanding University in Training & Placements 2026",
+                "Most Emerging University/Institute in India",
+                "Most Promising University in Curriculum Design and Development 2026",
+                "E-campus Award for the year 2026",
+                "Remarkable Contribution in Distance Learning Education",
+                "Most Promising Medical Institute/University for the year 2026",
+                "Most Promising Institute/University in India",
+                "Outstanding Engineering Institute for Student Outreach and Global Exposure",
+                "Most Promising Engineering Institute in India",
+                "Outstanding Institute with Best Infrastructure for the year 2026",
+            ],
+        },
+        {
+            title: "Individual Leadership Awards",
+            items: [
+                "Iconic Leadership in Higher Education 2026",
+                "Outstanding Leadership in Higher Education 2026",
+                "Outstanding Contribution in Online Education and Pedagogy 2026",
+                "Outstanding Teaching Excellence Award 2026",
+                "Excellent Digital Educator Award of the year 2026",
+                "Excellence in Innovative Teaching & Learning Practices 2026",
+                "Outstanding Research Scholar of the year 2026",
+                "Emerging Leader in Higher Education 2026",
+                "Entrepreneurship Award in Higher Education 2026",
+                "Women Entrepreneurship Award in Higher Education 2026",
+                "Outstanding Vice Chancellor of the year 2026",
+                "Early Childhood Educator of the Year",
+                "Pre-School Director of the Year",
+                "Innovative Pre-School Leader",
+                "Principal of the Year",
+                "Excellence in Inclusive Education Leadership",
+                "STEM Educator of the Year",
+                "Dean of the Year",
+                "University Chancellor/Vice Chancellor of the Year",
+                "Innovative School Leader",
+                "Outstanding Higher Education Administrator",
+                "Best Higher Education Innovator",
+                "EdTech Innovator of the Year",
+                "EdTech Founder of the Year",
+                "EdTech Thought Leader Award",
+                "Best Educator in Online Learning",
+                "Outstanding Women in Business Leadership",
+                "Innovative Entrepreneur of the Year",
+                "Business Leader of the Year",
+                "Best Digital Transformation Leader",
+                "Business Growth Leader of the Year",
+            ],
+        },
+        {
+            title: "EdTech Awards",
+            items: [
+                "Leading E-learning Platform 2026",
+                "Outstanding Tech Solution Provider for Higher Education 2026",
+                "Outstanding Tech Solution Provider for Schools 2026",
+                "Most Promising Assessment Solution Provider of the Year 2026",
+                "Outstanding Smart Class Solution Provider of the Year 2026",
+                "Leading ERP Solution Provider of the Year 2026",
+                "Leading Education Finance Company of the Year 2026",
+                "Outstanding Contribution to Education Financing in India 2026",
+                "Most Trusted Education Loan Provider of the Year 2026",
+                "Most Preferred Financial Partner for Students 2026",
+                "Excellence in Customer - Centric Education Loan Services 2026",
+                "Outstanding Digital Education Platform Provider of the Year 2026",
+                "Leading School Security Solution Provider of the Year 2026",
+                "Most Promising Video Conferencing Solution Provider of the Year 2026",
+                "Excellence in Multi-Language Content Provider of the Year 2026",
+                "Outstanding Admission Solution Provider of the Year 2026",
+                "Most Promising AR-VR Solution Provider of the Year 2026",
+                "Outstanding Innovation in AI-ML 2026",
+                "Outstanding Payment Solution Provider of the Year 2026",
+                "Leading Display Solution Provider of the Year 2026",
+                "Most Promising Hybrid Solution Provider of the Year 2026",
+                "Innovative Training Provider to Working Professionals 2026",
+                "Innovative Digital Payment Solution Provider of the Year 2026",
+                "Most Promising LMS Provider of the Year 2026",
+                "Most Immersive Learning Product of the Year",
+                "Best EdTech Company of the Year",
+                "EdTech Startup of the Year",
+                "Best EdTech Solution of the Year",
+                "Best Cyber Privacy/Security Solution in Education",
+                "Best Robotics Solution of the Year",
+                "Best Classroom Tech Solution of the Year",
+                "Best Test Prep Solution of the Year",
+                "Emerging Technology Solution",
+                "Best Learning Mobile App",
+                "Most Effective Use of EdTech Tools",
+            ],
+        },
+        {
+            title: "School Education Awards",
+            items: [
+                "Best Tech Savvy School of the Year",
+                "Best Technically Advanced School Chain of the Year",
+                "Best Standalone School of the Year",
+                "School with Best IT Infrastructure",
+                "Innovation for Curriculum Award",
+                "Educational Excellence Award",
+                "Best School in Management System of the Year",
+                "Most Innovative School of the Year",
+                "Best E-learning Methodology School of the Year",
+                "Most Progressive School of the Year",
+                "Best School for Futuristic Education",
+                "Most Inspirational School Award",
+            ],
+        },
+        {
+            title: "Preschool Education Awards",
+            items: [
+                "Best Preschool Chain of the Year",
+                "Best Standalone Preschool of the Year",
+                "Innovation for Curriculum Award",
+                "Innovation in Preschool Infrastructure",
+                "Best Use of Technology in Preschool",
+                "Effective Implementation & Integration of ICT",
+            ],
+        },
+    ];
+
+    const copyCategory = (category, index) => {
+        const text =
+            `***${category.title}***\n` +
+            category.items.map((item) => `• ${item}`).join("\n");
+
+        navigator.clipboard.writeText(text);
+        setCopiedIndex(index);
+
+        setTimeout(() => {
+            setCopiedIndex(null);
+        }, 2000);
+    };
+
+    return (
+        <section className="section grid-bg" style={{ padding: "80px 20px", width: "100%" }}>
+            <div className="container" style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 8px" }}>
+                <h2 className="section-title" style={{ textAlign: "center", fontSize: "2.2rem", fontWeight: 800, marginBottom: "0.5rem", color: "var(--color-white)" }}>
+                    Award Categories
+                </h2>
+
+                <div className="divider" style={{ width: "80px", height: "4px", background: "var(--color-red)", margin: "0 auto 2rem", borderRadius: "2px" }} />
+
+                <div className="category-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(311px, 1fr))", gap: "1.5rem" }}>
+                    {categories.map((category, idx) => (
+                        <div key={idx} className="category-card" style={{ background: "var(--bg-card)", borderRadius: "15px", overflow: "hidden", boxShadow: "var(--shadow-soft)", border: "1px solid var(--border-color)" }}>
+                            
+                            {/* HEADER */}
                             <div
-                                key={idx}
-                                className="category-card"
+                                className="category-header"
                                 style={{
-                                    background: "var(--bg-card)",
-                                    borderRadius: "15px",
-                                    overflow: "hidden",
-                                    boxShadow: "var(--shadow-soft)",
-                                    border: "1px solid var(--border-color)",
-                                    transition: "transform .3s ease, box-shadow .3s ease",
+                                    background: "var(--color-red)",
+                                    color: "var(--color-white)",
+                                    padding: "1.2rem",
+                                    fontSize: "1.1rem",
+                                    fontWeight: 700,
+                                    display: "flex",
+                                    justifyContent: "space-between",
+                                    alignItems: "center",
                                 }}
                             >
-                                <div
-                                    className="category-header"
+                                <span>{category.title}</span>
+
+                                <span
+                                    onClick={() => copyCategory(category, idx)}
                                     style={{
-                                        background: "var(--color-red)",
-                                        color: "var(--color-white)",
-                                        padding: "1.2rem",
-                                        fontSize: "1.1rem",
-                                        fontWeight: 700,
-                                        textAlign: "center",
+                                        cursor: "pointer",
+                                        fontSize: "1.2rem",
+                                        userSelect: "none",
                                     }}
+                                    title="Copy category"
                                 >
-                                    {category.title}
-                                </div>
-                                <div
-                                    className="category-body"
-                                    style={{
-                                        padding: "1rem 1.25rem",
-                                        maxHeight: "380px",
-                                        overflowY: "auto",
-                                        overflowX: "hidden",
-                                    }}
-                                >
-                                    <ul
-                                        className="category-list"
-                                        style={{ listStyle: "none", margin: 0, padding: 0 }}
-                                    >
-                                        {category.items.map((item, j) => (
-                                            <li
-                                                key={j}
-                                                className="category-item"
-                                                style={{
-                                                    display: "flex",
-                                                    alignItems: "flex-start",
-                                                    marginBottom: ".6rem",
-                                                    padding: ".4rem",
-                                                    borderRadius: "8px",
-                                                    transition: "background .2s ease",
-                                                }}
-                                            >
-                                                <span
-                                                    className="category-bullet"
-                                                    style={{
-                                                        color: "var(--color-red)",
-                                                        marginRight: ".6rem",
-                                                        fontWeight: "bold",
-                                                    }}
-                                                >
-                                                    •
-                                                </span>
-                                                <span
-                                                    className="category-text"
-                                                    style={{
-                                                        color: "#b0c4de",
-                                                        fontSize: ".95rem",
-                                                        overflowWrap: "anywhere",
-                                                        wordBreak: "break-word",
-                                                    }}
-                                                >
-                                                    {item}
-                                                </span>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </div>
+                                    {copiedIndex === idx ? "✔" : "📋"}
+                                </span>
                             </div>
-                        ))}
-                    </div>
-                    <div style={{ textAlign: "center", marginTop: "2rem" }}>
-                        {/* CTA reserved */}
-                    </div>
+
+                            <div className="category-body" style={{ padding: "1rem 1.25rem", maxHeight: "380px", overflowY: "auto" }}>
+                                <ul style={{ listStyle: "none", margin: 0, padding: 0 }}>
+                                    {category.items.map((item, j) => (
+                                        <li key={j} style={{ display: "flex", alignItems: "flex-start", marginBottom: ".6rem", padding: ".4rem", borderRadius: "8px" }}>
+                                            <span style={{ color: "var(--color-red)", marginRight: ".6rem", fontWeight: "bold" }}>•</span>
+                                            <span style={{ color: "#b0c4de", fontSize: ".95rem", overflowWrap: "anywhere" }}>
+                                                {item}
+                                            </span>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        </div>
+                    ))}
                 </div>
-            </section>
-        );
-    };
+            </div>
+        </section>
+    );
+};
 
     const NominationGuidelines = () => (
         <section
@@ -989,7 +924,7 @@ SWIFT Code: SBIN0065135`;
                         <h3 className="price-title" style={{ fontSize: "1.3rem", fontWeight: 700, marginBottom: ".75rem" }}>
                             EdTech Companies
                         </h3>
-                        <p className="price-value" style={{ fontSize: "2.4rem", fontWeight: 800, marginBottom: ".25rem", color: "var(--color-red)" }}>
+                        <p className="price-value" style={{ fontSize: "2.4rem", fontWeight: 800, marginBottom: ".25rem", color: "var(--color-white)" }}>
                             ₹30,000
                         </p>
                         <p className="price-desc" style={{ color: "#b0c4de", marginBottom: "1rem" }}>
@@ -1080,7 +1015,7 @@ SWIFT Code: SBIN0065135`;
                                 fontSize: "1.35rem",
                                 fontWeight: 700,
                                 marginBottom: "1.5rem",
-                                color: "var(--color-white)",
+                                color: "var(--color-red)",
                             }}
                         >
                             For Award Nomination Queries

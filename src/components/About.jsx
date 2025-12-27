@@ -87,7 +87,7 @@ function About() {
     <section  id="about" style={styles.section}>
       {/* ⭐ MAIN SECTION HEADING */}
       <h2 style={styles.heading}>
-        Education Tomorrow Conclave & Awards 2025
+        Education Tomorrow Conclave & Awards 2026
       </h2>
 
       {/* CONTENT CARD */}
@@ -96,13 +96,13 @@ function About() {
 
         <p style={styles.paragraph}>
           The <strong>Education Tomorrow Conclave & Awards 2026</strong>,
-          scheduled for February in New Chandigarh, will bring together visionary
+          scheduled for February in Chandigarh, will bring together visionary
           leaders from academia, industry, and government to reimagine the
           future of learning in an AI-driven world.
         </p>
 
         <p style={styles.paragraph}>
-          With the theme <strong>“Reimagining Learning in the Age of AI,”</strong>{" "}
+          With the theme <strong>“Education 4.0: Learning for a New Era of AI & Innovation,”</strong>{" "}
           the conclave will explore how artificial intelligence is
           revolutionizing education — from intelligent classrooms and adaptive
           learning systems to AI-powered curriculum design and future-ready
