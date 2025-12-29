@@ -10,62 +10,155 @@ const Awards = () => {
 
     const [copied, setCopied] = useState(false);
 
+// const HeroSection = () => {
+//   return (
+//     <section
+//       className="hero-section"
+//       style={{
+//         backgroundImage: `url(${heroImg})`,
+//         backgroundSize: "cover",
+//         backgroundPosition: "center center",
+//         backgroundRepeat: "no-repeat",
+//         minHeight: "120vh",
+//         display: "flex",
+//         alignItems: "center",
+//         justifyContent: "center",
+//         position: "relative",
+//         textAlign: "center",
+//         padding: "2rem",
+//       }}
+//       aria-label="Awards hero section"
+//     >
+//       {/* ===== LOCAL CSS ===== */}
+//       <style>{`
+//         .back-btn {
+//           position: fixed;
+//           top: 22px;
+//           left: 22px;
+//           z-index: 999;
+
+//           display: flex;
+//           align-items: center;
+//           gap: 6px;
+
+//           padding: 10px 20px;
+//           border-radius: 30px;
+
+//           background: var(--bg-gradient);
+//           color: var(--color-white);
+
+//           border: 1px solid white);
+//           font-size: 0.95rem;
+//           font-weight: 600;
+
+//           cursor: pointer;
+//           backdrop-filter: blur(10px);
+
+//           transition: 
+//             background 0.25s ease,
+//             transform 0.25s ease,
+//             box-shadow 0.25s ease;
+//         }
+
+//         .back-btn:hover {
+//           background: var(--bg-gradient);
+//           box-shadow: 0 0 12px rgba(225, 6, 0, 0.6);
+//           transform: translateY(-2px);
+//         }
+
+//         @media (max-width: 768px) {
+//           .back-btn {
+//             padding: 8px 16px;
+//             font-size: 0.9rem;
+//           }
+//         }
+//       `}</style>
+
+//       {/* 🔙 BACK BUTTON */}
+//       <button
+//         onClick={() => navigate("/")}
+//         className="back-btn"
+//         aria-label="Go back to home"
+//       >
+//         ← Back
+//       </button>
+
+//       <div
+//         className="hero-content"
+//         style={{
+//           position: "relative",
+//           zIndex: 2,
+//           maxWidth: "800px",
+//           width: "100%",
+//         }}
+//       >
+//         {/* hero content if needed */}
+//       </div>
+//     </section>
+//   );
+// };
 const HeroSection = () => {
   return (
-    <section
-      className="hero-section"
-      style={{
-        backgroundImage: `url(${heroImg})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center center",
-        backgroundRepeat: "no-repeat",
-        minHeight: "120vh",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        position: "relative",
-        textAlign: "center",
-        padding: "2rem",
-      }}
-      aria-label="Awards hero section"
-    >
-      {/* ===== LOCAL CSS ===== */}
+    <section className="hero-section" aria-label="Awards hero section">
       <style>{`
+        body {
+          margin: 0;
+          padding: 0;
+        }
+
+        .hero-section {
+          width: 100%;
+          margin: 0;
+          padding: 0;
+          overflow: hidden;
+          position: relative;
+        }
+
+        /* 🔥 IMAGE CONTAINER */
+        .hero-image-wrapper {
+          width: 100%;
+          overflow: hidden;
+          position: relative;
+        }
+
+        /* 🔥 RESPONSIVE IMAGE */
+        .hero-image {
+          width: 100%;
+          height: auto; /* ✅ height reduces with width */
+          display: block; /* ✅ removes top gap */
+          object-fit: cover;
+
+          animation: zoomImg 3s ease-in-out infinite alternate;
+          transform-origin: center top; /* ✅ zoom from top */
+        }
+
+        @keyframes zoomImg {
+          from {
+            transform: scale(1);
+          }
+          to {
+            transform: scale(1.08);
+          }
+        }
+
+        /* 🔙 Back Button */
         .back-btn {
           position: fixed;
           top: 22px;
           left: 22px;
-          z-index: 999;
-
-          display: flex;
-          align-items: center;
-          gap: 6px;
+          z-index: 10;
 
           padding: 10px 20px;
           border-radius: 30px;
-
           background: var(--bg-gradient);
-          color: var(--color-white);
-
-          border: 1px solid white);
-          font-size: 0.95rem;
+          color: #fff;
+          border: 1px solid white;
           font-weight: 600;
-
           cursor: pointer;
           backdrop-filter: blur(10px);
-
-          transition: 
-            background 0.25s ease,
-            transform 0.25s ease,
-            box-shadow 0.25s ease;
         }
 
-        .back-btn:hover {
-          background: var(--bg-gradient);
-          box-shadow: 0 0 12px rgba(225, 6, 0, 0.6);
-          transform: translateY(-2px);
-        }
-
+        /* 📱 Mobile */
         @media (max-width: 768px) {
           .back-btn {
             padding: 8px 16px;
@@ -75,28 +168,22 @@ const HeroSection = () => {
       `}</style>
 
       {/* 🔙 BACK BUTTON */}
-      <button
-        onClick={() => navigate("/")}
-        className="back-btn"
-        aria-label="Go back to home"
-      >
+      <button onClick={() => navigate("/")} className="back-btn">
         ← Back
       </button>
 
-      <div
-        className="hero-content"
-        style={{
-          position: "relative",
-          zIndex: 2,
-          maxWidth: "800px",
-          width: "100%",
-        }}
-      >
-        {/* hero content if needed */}
+      {/* 🔥 IMAGE CONTAINER */}
+      <div className="hero-image-wrapper">
+        <img
+          src={heroImg}
+          alt="Education Tomorrow Awards 2026"
+          className="hero-image"
+        />
       </div>
     </section>
   );
 };
+
 
     const AboutAwards = () => (
         <section
