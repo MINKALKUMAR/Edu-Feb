@@ -8,25 +8,39 @@ import Navbar from "./components/Navbar";
 import ScrollNavbar from "./components/ScrollNavbar";
 import ScrollToTop from "./components/ScrollToTop";
 
+const DelegateRegistration = lazy(() => import("./components/DelegateRegistration"));
+const SponsorshipRegistration = lazy(() => import("./components/SponsorshipRegistration"));
 const Awards = lazy(() => import("./components/Awards"));
 
 function Layout() {
   const location = useLocation();
-  const isAwardsPage = location.pathname === "/awards";
+
+  // ✅ Pages where BOTH navbars should be hidden
+  const hideNavbarRoutes = [
+    "/awards",
+    "/delegate-registration",
+    "/sponsorship-registration",
+  ];
+
+  const hideNavbars = hideNavbarRoutes.includes(location.pathname);
 
   return (
     <>
-      {/* ✅ Hide BOTH navbars on Awards page */}
-      {!isAwardsPage && <Navbar />}
-      {!isAwardsPage && <ScrollNavbar />}
+      {/* ✅ Hide BOTH navbars on selected pages */}
+      {!hideNavbars && <Navbar />}
+      {!hideNavbars && <ScrollNavbar />}
 
       <div className="content-container">
         <Suspense fallback={<div style={{ padding: "120px" }}>Loading...</div>}>
           <ScrollToTop />
+
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/awards" element={<Awards />} />
+            <Route path="/delegate-registration" element={<DelegateRegistration />} />
+            <Route path="/sponsorship-registration" element={<SponsorshipRegistration />} />
           </Routes>
+
         </Suspense>
       </div>
     </>
@@ -40,4 +54,5 @@ function App() {
     </Router>
   );
 }
+
 export default App;

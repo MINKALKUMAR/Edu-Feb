@@ -137,12 +137,12 @@ function Home() {
           <h1 style={styles.title}>Education 4.0: Learning for a New Era of AI & Innovation</h1>
 
           <h2 style={styles.subtitle}>
-            07th February 2026 • Hotel Park Plaza • Chandigarh
+            07th February 2026 • Hotel Park Plaza •Zirakpur Chandigarh
           </h2>
 
           <div style={styles.buttonWrap}>
             <a
-              href="#"
+              href="/delegate-registration"
               style={glowButton(hoverBtn1)}
               onMouseEnter={() => setHoverBtn1(true)}
               onMouseLeave={() => setHoverBtn1(false)}
@@ -151,13 +151,14 @@ function Home() {
             </a>
 
             <a
-              href="#"
+              href="/sponsorship-registration"
               style={glowButton(hoverBtn2)}
               onMouseEnter={() => setHoverBtn2(true)}
               onMouseLeave={() => setHoverBtn2(false)}
             >
               Express Interest
             </a>
+
           </div>
         </div>
       </section>
@@ -166,11 +167,11 @@ function Home() {
       <Suspense fallback={<div style={{ height: "100vh" }} />}>
         <About />
         <Stats />
-        <OurPartners />    
+        <OurPartners />
         {/* <Speakers /> */}
         <DiscussionPoints />
         <PastGlimpses />
-           <IndustryTestimonials />
+        <IndustryTestimonials />
         <Venue />
         <Contact />
       </Suspense>

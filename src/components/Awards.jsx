@@ -338,7 +338,7 @@ const HeroSection = () => {
     };
 
 
-const AwardCategories = () => {
+  const AwardCategories = () => {
     const [copiedIndex, setCopiedIndex] = useState(null);
 
     const categories = [
