@@ -128,18 +128,10 @@ const HeroSection = () => {
           display: block; /* ✅ removes top gap */
           object-fit: cover;
 
-          animation: zoomImg 3s ease-in-out infinite alternate;
+        //   animation: zoomImg 3s ease-in-out infinite alternate;
           transform-origin: center top; /* ✅ zoom from top */
         }
 
-        @keyframes zoomImg {
-          from {
-            transform: scale(1);
-          }
-          to {
-            transform: scale(1.08);
-          }
-        }
 
         /* 🔙 Back Button */
         .back-btn {
@@ -851,183 +843,352 @@ SWIFT Code: SBIN0065135`;
         </section>
     );
 
-    const Pricing = () => (
-        <section
-            className="section grid-bg"
-            style={{
-                padding: "80px 20px",
-                width: "100%",
-                // background: "var(--bg-gradient)",
-            }}
-        >
-            <div
-                className="container"
-                style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 8px" }}
-            >
-                <h2
-                    className="section-title"
-                    style={{
-                        textAlign: "center",
-                        fontSize: "2.2rem",
-                        fontWeight: 800,
-                        marginBottom: "0.5rem",
-                        color: "var(--color-white)",
-                    }}
-                >
-                    Nomination Fee
-                </h2>
-                {/* <p
-          className="section-subtitle"
+    // const Pricing = () => (
+    //     <section
+    //         className="section grid-bg"
+    //         style={{
+    //             padding: "80px 20px",
+    //             width: "100%",
+    //             // background: "var(--bg-gradient)",
+    //         }}
+    //     >
+    //         <div
+    //             className="container"
+    //             style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 8px" }}
+    //         >
+    //             <h2
+    //                 className="section-title"
+    //                 style={{
+    //                     textAlign: "center",
+    //                     fontSize: "2.2rem",
+    //                     fontWeight: 800,
+    //                     marginBottom: "0.5rem",
+    //                     color: "var(--color-white)",
+    //                 }}
+    //             >
+    //                 Nomination Fee
+    //             </h2>
+    //             {/* <p
+    //       className="section-subtitle"
+    //       style={{
+    //         textAlign: "center",
+    //         fontSize: "1.05rem",
+    //         color: "#b0c4de",
+    //         margin: "0 auto 2rem",
+    //         maxWidth: "600px",
+    //       }}
+    //     >
+    //       Choose the category that matches your nomination
+    //     </p> */}
+    //             <div
+    //                 className="divider"
+    //                 style={{
+    //                     width: "80px",
+    //                     height: "4px",
+    //                     background: "var(--color-red)",
+    //                     margin: "0 auto 2rem",
+    //                     borderRadius: "2px",
+    //                 }}
+    //             />
+    //             <div
+    //                 className="price-grid"
+    //                 style={{
+    //                     display: "grid",
+    //                     gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
+    //                     gap: "1.5rem",
+    //                 }}
+    //             >
+    //                 <div
+    //                     className="price-card"
+    //                     role="article"
+    //                     aria-label="Individual price card"
+    //                     style={{
+    //                         background: "var(--bg-gradient)",
+    //                         padding: "2rem 1.5rem",
+    //                         borderRadius: "20px",
+    //                         textAlign: "center",
+    //                         boxShadow: "var(--shadow-soft)",
+    //                         border: "2px solid var(--border-color)",
+    //                         transition: "transform .3s ease, box-shadow .3s ease",
+    //                         position: "relative",
+    //                     }}
+    //                 >
+    //                     <h3
+    //                         className="price-title"
+    //                         style={{ fontSize: "1.3rem", fontWeight: 700, marginBottom: ".75rem" }}
+    //                     >
+    //                         Individual
+    //                     </h3>
+    //                     <p
+    //                         className="price-value"
+    //                         style={{ fontSize: "2.4rem", fontWeight: 800, marginBottom: ".25rem", color: "var(--color-white)" }}
+    //                     >
+    //                         ₹11,800
+    //                     </p>
+    //                     <p className="price-desc" style={{ color: "#b0c4de", marginBottom: "1rem" }}>
+    //                         (₹10,000 + 18% GST)
+    //                     </p>
+    //                     <ul className="price-list" style={{ textAlign: "left", color: "#b0c4de", marginBottom: "1.5rem" }}>
+    //                         <li>✓ Individual professionals</li>
+    //                         <li>✓ Educators & Teachers</li>
+    //                         <li>✓ Researchers</li>
+    //                     </ul>
+    //                 </div>
+
+    //                 <div
+    //                     className="price-card featured"
+    //                     role="article"
+    //                     aria-label="Educational institutions price card"
+    //                     style={{
+    //                         background: "var(--color-red)",
+    //                         color: "var(--color-white)",
+    //                         padding: "2rem 1.5rem",
+    //                         borderRadius: "20px",
+    //                         textAlign: "center",
+    //                         boxShadow: "var(--shadow-soft)",
+    //                         border: "2px solid var(--border-color)",
+    //                         transition: "transform .3s ease, box-shadow .3s ease",
+    //                         position: "relative",
+    //                         transform: "scale(1.03)",
+    //                     }}
+    //                 >
+    //                     <div
+    //                         className="price-badge"
+    //                         style={{
+    //                             position: "absolute",
+    //                             top: "-10px",
+    //                             left: "50%",
+    //                             transform: "translateX(-50%)",
+    //                             background: "var(--color-white)",
+    //                             color: "var(--color-red)",
+    //                             padding: "5px 16px",
+    //                             borderRadius: "20px",
+    //                             fontSize: ".85rem",
+    //                             fontWeight: 700,
+    //                         }}
+    //                     >
+    //                         Most Popular
+    //                     </div>
+    //                     <h3 className="price-title" style={{ fontSize: "1.3rem", fontWeight: 700, marginBottom: ".75rem" }}>
+    //                         Educational Institutions
+    //                     </h3>
+    //                     <p className="price-value" style={{ fontSize: "2.4rem", fontWeight: 800, marginBottom: ".25rem" }}>
+    //                         ₹17,700
+    //                     </p>
+    //                     <p className="price-desc" style={{ color: "var(--color-white)", marginBottom: "1rem" }}>
+    //                         (₹15,000 + 18% GST)
+    //                     </p>
+    //                     <ul className="price-list" style={{ textAlign: "left", color: "var(--color-white)", marginBottom: "1.5rem" }}>
+    //                         <li>✓ Schools & Colleges</li>
+    //                         <li>✓ Universities</li>
+    //                         <li>✓ Preschools</li>
+    //                     </ul>
+    //                 </div>
+
+    //                 <div
+    //                     className="price-card"
+    //                     role="article"
+    //                     aria-label="EdTech companies price card"
+    //                     style={{
+    //                         background: "var(--bg-gradient)",
+    //                         padding: "2rem 1.5rem",
+    //                         borderRadius: "20px",
+    //                         textAlign: "center",
+    //                         boxShadow: "var(--shadow-soft)",
+    //                         border: "2px solid var(--border-color)",
+    //                         transition: "transform .3s ease, box-shadow .3s ease",
+    //                         position: "relative",
+    //                     }}
+    //                 >
+    //                     <h3 className="price-title" style={{ fontSize: "1.3rem", fontWeight: 700, marginBottom: ".75rem" }}>
+    //                         EdTech Companies
+    //                     </h3>
+    //                     <p className="price-value" style={{ fontSize: "2.4rem", fontWeight: 800, marginBottom: ".25rem", color: "var(--color-white)" }}>
+    //                         ₹30,000
+    //                     </p>
+    //                     <p className="price-desc" style={{ color: "#b0c4de", marginBottom: "1rem" }}>
+    //                         (₹25,000 + 18% GST)
+    //                     </p>
+    //                     <ul className="price-list" style={{ textAlign: "left", color: "#b0c4de", marginBottom: "1.5rem" }}>
+    //                         <li>✓ EdTech Startups</li>
+    //                         <li>✓ Technology Providers</li>
+    //                         <li>✓ Solution Providers</li>
+    //                     </ul>
+    //                 </div>
+    //             </div>
+    //         </div>
+    //     </section>
+    // );
+
+const Pricing = () => (
+  <section
+    className="section grid-bg"
+    style={{
+      padding: "80px 20px",
+      width: "100%",
+    }}
+  >
+    <div
+      className="container"
+      style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 8px" }}
+    >
+      <h2
+        className="section-title"
+        style={{
+          textAlign: "center",
+          fontSize: "2.2rem",
+          fontWeight: 800,
+          marginBottom: "0.5rem",
+          color: "var(--color-white)",
+        }}
+      >
+        Nomination Fee
+      </h2>
+
+      <div
+        className="divider"
+        style={{
+          width: "80px",
+          height: "4px",
+          background: "var(--color-red)",
+          margin: "0 auto 2rem",
+          borderRadius: "2px",
+        }}
+      />
+
+      {/* ===== TOP 3 CARDS ===== */}
+      <div
+        className="price-grid"
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
+          gap: "1.5rem",
+          marginBottom: "2.5rem",
+        }}
+      >
+        {/* Individual */}
+        <div
+          className="price-card"
           style={{
+            background: "var(--bg-gradient)",
+            padding: "2rem 1.5rem",
+            borderRadius: "20px",
             textAlign: "center",
-            fontSize: "1.05rem",
-            color: "#b0c4de",
-            margin: "0 auto 2rem",
-            maxWidth: "600px",
+            boxShadow: "var(--shadow-soft)",
+            border: "2px solid var(--border-color)",
           }}
         >
-          Choose the category that matches your nomination
-        </p> */}
-                <div
-                    className="divider"
-                    style={{
-                        width: "80px",
-                        height: "4px",
-                        background: "var(--color-red)",
-                        margin: "0 auto 2rem",
-                        borderRadius: "2px",
-                    }}
-                />
-                <div
-                    className="price-grid"
-                    style={{
-                        display: "grid",
-                        gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
-                        gap: "1.5rem",
-                    }}
-                >
-                    <div
-                        className="price-card"
-                        role="article"
-                        aria-label="Individual price card"
-                        style={{
-                            background: "var(--bg-gradient)",
-                            padding: "2rem 1.5rem",
-                            borderRadius: "20px",
-                            textAlign: "center",
-                            boxShadow: "var(--shadow-soft)",
-                            border: "2px solid var(--border-color)",
-                            transition: "transform .3s ease, box-shadow .3s ease",
-                            position: "relative",
-                        }}
-                    >
-                        <h3
-                            className="price-title"
-                            style={{ fontSize: "1.3rem", fontWeight: 700, marginBottom: ".75rem" }}
-                        >
-                            Individual
-                        </h3>
-                        <p
-                            className="price-value"
-                            style={{ fontSize: "2.4rem", fontWeight: 800, marginBottom: ".25rem", color: "var(--color-white)" }}
-                        >
-                            ₹11,800
-                        </p>
-                        <p className="price-desc" style={{ color: "#b0c4de", marginBottom: "1rem" }}>
-                            (₹10,000 + 18% GST)
-                        </p>
-                        <ul className="price-list" style={{ textAlign: "left", color: "#b0c4de", marginBottom: "1.5rem" }}>
-                            <li>✓ Individual professionals</li>
-                            <li>✓ Educators & Teachers</li>
-                            <li>✓ Researchers</li>
-                        </ul>
-                    </div>
+          <h3 style={{ fontSize: "1.3rem", fontWeight: 700 }}>Individual</h3>
+          <p style={{ fontSize: "2.4rem", fontWeight: 800, color: "var(--color-white)" }}>
+            ₹11,800
+          </p>
+          <p style={{ color: "#b0c4de" }}>(₹10,000 + 18% GST)</p>
+          <ul style={{ textAlign: "left", color: "#b0c4de", marginTop: "1rem" }}>
+            <li>✓ Individual professionals</li>
+            <li>✓ Educators & Teachers</li>
+            <li>✓ Researchers</li>
+          </ul>
+        </div>
 
-                    <div
-                        className="price-card featured"
-                        role="article"
-                        aria-label="Educational institutions price card"
-                        style={{
-                            background: "var(--color-red)",
-                            color: "var(--color-white)",
-                            padding: "2rem 1.5rem",
-                            borderRadius: "20px",
-                            textAlign: "center",
-                            boxShadow: "var(--shadow-soft)",
-                            border: "2px solid var(--border-color)",
-                            transition: "transform .3s ease, box-shadow .3s ease",
-                            position: "relative",
-                            transform: "scale(1.03)",
-                        }}
-                    >
-                        <div
-                            className="price-badge"
-                            style={{
-                                position: "absolute",
-                                top: "-10px",
-                                left: "50%",
-                                transform: "translateX(-50%)",
-                                background: "var(--color-white)",
-                                color: "var(--color-red)",
-                                padding: "5px 16px",
-                                borderRadius: "20px",
-                                fontSize: ".85rem",
-                                fontWeight: 700,
-                            }}
-                        >
-                            Most Popular
-                        </div>
-                        <h3 className="price-title" style={{ fontSize: "1.3rem", fontWeight: 700, marginBottom: ".75rem" }}>
-                            Educational Institutions
-                        </h3>
-                        <p className="price-value" style={{ fontSize: "2.4rem", fontWeight: 800, marginBottom: ".25rem" }}>
-                            ₹17,700
-                        </p>
-                        <p className="price-desc" style={{ color: "var(--color-white)", marginBottom: "1rem" }}>
-                            (₹15,000 + 18% GST)
-                        </p>
-                        <ul className="price-list" style={{ textAlign: "left", color: "var(--color-white)", marginBottom: "1.5rem" }}>
-                            <li>✓ Schools & Colleges</li>
-                            <li>✓ Universities</li>
-                            <li>✓ Preschools</li>
-                        </ul>
-                    </div>
+        {/* Educational Institutions */}
+        <div
+          className="price-card featured"
+          style={{
+            background: "var(--color-red)",
+            color: "var(--color-white)",
+            padding: "2rem 1.5rem",
+            borderRadius: "20px",
+            textAlign: "center",
+            boxShadow: "var(--shadow-soft)",
+            border: "2px solid var(--border-color)",
+            transform: "scale(1.03)",
+          }}
+        >
+          <div
+            style={{
+              position: "absolute",
+              top: "-10px",
+              left: "50%",
+              transform: "translateX(-50%)",
+              background: "var(--color-white)",
+              color: "var(--color-red)",
+              padding: "5px 16px",
+              borderRadius: "20px",
+              fontSize: ".85rem",
+              fontWeight: 700,
+            }}
+          >
+            Most Popular
+          </div>
+          <h3 style={{ fontSize: "1.3rem", fontWeight: 700 }}>
+            Educational Institutions
+          </h3>
+          <p style={{ fontSize: "2.4rem", fontWeight: 800 }}>₹17,700</p>
+          <p>(₹15,000 + 18% GST)</p>
+          <ul style={{ textAlign: "left", marginTop: "1rem" }}>
+            <li>✓ Schools & Colleges</li>
+            <li>✓ Universities</li>
+            <li>✓ Preschools</li>
+          </ul>
+        </div>
 
-                    <div
-                        className="price-card"
-                        role="article"
-                        aria-label="EdTech companies price card"
-                        style={{
-                            background: "var(--bg-gradient)",
-                            padding: "2rem 1.5rem",
-                            borderRadius: "20px",
-                            textAlign: "center",
-                            boxShadow: "var(--shadow-soft)",
-                            border: "2px solid var(--border-color)",
-                            transition: "transform .3s ease, box-shadow .3s ease",
-                            position: "relative",
-                        }}
-                    >
-                        <h3 className="price-title" style={{ fontSize: "1.3rem", fontWeight: 700, marginBottom: ".75rem" }}>
-                            EdTech Companies
-                        </h3>
-                        <p className="price-value" style={{ fontSize: "2.4rem", fontWeight: 800, marginBottom: ".25rem", color: "var(--color-white)" }}>
-                            ₹30,000
-                        </p>
-                        <p className="price-desc" style={{ color: "#b0c4de", marginBottom: "1rem" }}>
-                            (₹25,000 + 18% GST)
-                        </p>
-                        <ul className="price-list" style={{ textAlign: "left", color: "#b0c4de", marginBottom: "1.5rem" }}>
-                            <li>✓ EdTech Startups</li>
-                            <li>✓ Technology Providers</li>
-                            <li>✓ Solution Providers</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-    );
+        {/* EdTech */}
+        <div
+          className="price-card"
+          style={{
+            background: "var(--bg-gradient)",
+            padding: "2rem 1.5rem",
+            borderRadius: "20px",
+            textAlign: "center",
+            boxShadow: "var(--shadow-soft)",
+            border: "2px solid var(--border-color)",
+          }}
+        >
+          <h3 style={{ fontSize: "1.3rem", fontWeight: 700 }}>EdTech Companies</h3>
+          <p style={{ fontSize: "2.4rem", fontWeight: 800, color: "var(--color-white)" }}>
+            ₹30,000
+          </p>
+          <p style={{ color: "#b0c4de" }}>(₹25,000 + 18% GST)</p>
+          <ul style={{ textAlign: "left", color: "#b0c4de", marginTop: "1rem" }}>
+            <li>✓ EdTech Startups</li>
+            <li>✓ Technology Providers</li>
+            <li>✓ Solution Providers</li>
+          </ul>
+        </div>
+      </div>
 
+      {/* ===== BOTTOM CENTER CARD ===== */}
+      <div style={{ display: "flex", justifyContent: "center" }}>
+        <div
+          className="price-card"
+          style={{
+            background: "var(--bg-gradient)",
+            padding: "2rem 1.5rem",
+            borderRadius: "20px",
+            textAlign: "center",
+            boxShadow: "var(--shadow-soft)",
+            border: "2px solid var(--border-color)",
+            maxWidth: "360px",
+            width: "100%",
+          }}
+        >
+          <h3 style={{ fontSize: "1.3rem", fontWeight: 700 }}>
+            International Schools & Colleges
+          </h3>
+          <p style={{ fontSize: "2.4rem", fontWeight: 800, color: "var(--color-white)" }}>
+            $450
+          </p>
+          <p style={{ color: "#b0c4de" }}>(369 USD + 18% GST)</p>
+          <ul style={{ textAlign: "left", color: "#b0c4de", marginTop: "1rem" }}>
+            <li>✓ Schools, Colleges & Universities</li>
+            <li>✓ Individual Professionals</li>
+            <li>✓ Educators & Teachers</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+);
 
 
     const Contact = () => (
