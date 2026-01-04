@@ -168,7 +168,7 @@ function Home() {
         <About />
         <Stats />
         <OurPartners />
-        {/* <Speakers /> */}
+        <Speakers />
         <DiscussionPoints />
         <PastGlimpses />
         <IndustryTestimonials />

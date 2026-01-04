@@ -272,6 +272,9 @@ import SMT from "../assets/partners/SMT.png";
 import Education_Future_One from "../assets/partners/Education_Future_One.png";
 import Avanse from "../assets/partners/Avanse.jpg";
 import Gifting from "../assets/partners/Gifting.png";
+import FretBox from "../assets/partners/FretBox.png";
+
+
 
 const OurPartners = () => {
   const sectionRef = useRef(null);
@@ -462,7 +465,8 @@ const OurPartners = () => {
 
   const partnerCategories = [
     {
-      className: "first-row",
+      // className: "first-row",
+      className: "third-row",
       partners: [
         { name: "Organiser", logo: FintrexLogo, link: "https://fintrexmedia.com/" },
         { name: "Knowledge Partner", logo: EducoreLogo, link: "#" },
@@ -479,9 +483,10 @@ const OurPartners = () => {
     //   ],
     // },
     {
-      className: "third-row",
+      // className: "third-row",
+      className: "first-row",
       partners: [
-        // { name: "Student Success Partner", logo: Avanse, link: "#" },
+        { name: "Associate Partner", logo: FretBox, link: "#" },
         { name: "Gifting Partner", logo: Gifting, link: "#" },
       ],
     },
