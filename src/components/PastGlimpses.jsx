@@ -305,7 +305,7 @@ export default function PastGlimpses() {
   const strips = useMemo(
     () => [
       images.slice(0, 6),
-      images.slice(6, 12),
+      images.slice(6, 13),
       images.slice(12, 19),
     ],
     []

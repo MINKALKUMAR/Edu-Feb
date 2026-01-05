@@ -321,6 +321,12 @@ const Contact = () => {
       email: "basant@fintrexmedia.com",
       phone: "7505024107",
     },
+    {
+      title: "Delegate Opportunity",
+      name: "Jyoti Dhiman",
+      email: "jyoti@fintrexmedia.com",
+      phone: "9536307418",
+    },
   ];
 
   return (

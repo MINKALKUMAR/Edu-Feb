@@ -58,16 +58,16 @@ const speakers = [
     img: vijayBanga,
     logo: MainLogo,
   },
+   // 6️⃣ Campus Director
   {
-    name: "Dr. Ashish Sharma",
-    title: "Director",
-    org: "Shishu Niketan Public School",
+    name: "Dr. Honey Sharma",
+    title: "Campus Director",
+    org: "Gulzar Group Of Institutes",
     location: "",
-    img: ashishSharma,
+    img: honeySharma,
     logo: MainLogo,
   },
-
-  // 4️⃣ Additional Director
+   // 4️⃣ Additional Director
   {
     name: "Prof. (Dr.) Arti Bansal",
     title: "Additional Director",
@@ -77,6 +77,16 @@ const speakers = [
     logo: MainLogo,
   },
 
+  {
+    name: "Dr. Ashish Sharma",
+    title: "Director",
+    org: "Shishu Niketan Public School",
+    location: "",
+    img: ashishSharma,
+    logo: MainLogo,
+  },
+
+ 
   // 5️⃣ Senior Principal
   {
     name: "Dr. Vandna Shahi",
@@ -87,15 +97,7 @@ const speakers = [
     logo: MainLogo,
   },
 
-  // 6️⃣ Campus Director
-  {
-    name: "Dr. Honey Sharma",
-    title: "Campus Director",
-    org: "Gulzar Group Of Institutes",
-    location: "",
-    img: honeySharma,
-    logo: MainLogo,
-  },
+ 
 ];
 
 
