@@ -7,6 +7,10 @@ import vijayBanga from "../assets/OurSpeakers/Prof. Dr. Vijay Kumar Banga.webp";
 import parvinderSingh from "../assets/OurSpeakers/Prof.(Dr.) Parvinder Singh.webp";
 import ashishSharma from "../assets/OurSpeakers/Dr Ashish Sharma.png";
 import artiBansal from "../assets/OurSpeakers/Prof.(Dr.) Arti Bansal.png";
+import Vikrant from "../assets/OurSpeakers/Vikrant Sharma.png";
+import Raghuveer from "../assets/OurSpeakers/Dr Raghuveer VR.webp";
+import HarpalThethi from "../assets/OurSpeakers/Dr. Harpal Thethi.webp";
+import manpreetsingh from "../assets/OurSpeakers/Prof (Dr.) Manpreet Singh Manna.png";
 
 import MainLogo from "../assets/MainLogo.png";
 function Speakers() {
@@ -48,6 +52,22 @@ const speakers = [
     img: manojManuja,
     logo: MainLogo,
   },
+  {
+    name: "Prof (Dr.) Manpreet Singh Manna",
+    title: "Director AICTE | Founder SWAYAM | SDG4 UNO Member",
+    org: "",
+    location: "",
+    img: manpreetsingh,
+    logo: MainLogo,
+  },
+  {
+    name: "Dr Raghuveer VR",
+    title: "Pro Vice Chancellor – Academic Affairs",
+    org: "Chandigarh University",
+    location: "",
+    img: Raghuveer,
+    logo: MainLogo,
+  },
 
   // 3️⃣ Directors
   {
@@ -77,7 +97,16 @@ const speakers = [
     logo: MainLogo,
   },
 
+ 
   {
+    name: "Dr. Harpal Thethi",
+    title: "Professor & Executive Dean - Corporate Relations & Career Planning",
+    org: "Lovely Professional University",
+    location: "",
+    img: HarpalThethi,
+    logo: MainLogo,
+  },
+   {
     name: "Dr. Ashish Sharma",
     title: "Director",
     org: "Shishu Niketan Public School",
@@ -85,7 +114,14 @@ const speakers = [
     img: ashishSharma,
     logo: MainLogo,
   },
-
+ {
+    name: "Vikrant Sharma",
+    title: "Director Principal",
+    org: "Littlewood Public School",
+    location: "",
+    img: Vikrant,
+    logo: MainLogo,
+  },
  
   // 5️⃣ Senior Principal
   {
@@ -96,6 +132,7 @@ const speakers = [
     img: vandnaShahi,
     logo: MainLogo,
   },
+ 
 
  
 ];
