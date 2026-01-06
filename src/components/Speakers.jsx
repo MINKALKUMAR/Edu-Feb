@@ -11,6 +11,8 @@ import Vikrant from "../assets/OurSpeakers/Vikrant Sharma.png";
 import Raghuveer from "../assets/OurSpeakers/Dr Raghuveer VR.webp";
 import HarpalThethi from "../assets/OurSpeakers/Dr. Harpal Thethi.webp";
 import manpreetsingh from "../assets/OurSpeakers/Prof (Dr.) Manpreet Singh Manna.png";
+import Colonel from "../assets/OurSpeakers/Dr. Colonel Atul Bhandari.png";
+import parmodKumar from "../assets/OurSpeakers/Dr Parmod Kumar.png";
 
 import MainLogo from "../assets/MainLogo.png";
 function Speakers() {
@@ -122,6 +124,22 @@ const speakers = [
     img: Vikrant,
     logo: MainLogo,
   },
+ {
+    name: "Dr. Colonel Atul Bhandari",
+    title: "Director Principal",
+    org: "British Laureate School Mohali",
+    location: "",
+    img: Colonel,
+    logo: MainLogo,
+  },
+ {
+    name: "Dr Parmod Kumar",
+    title: "State Programme Officer",
+    org: "Department of School Education, Haryana",
+    location: "",
+    img: parmodKumar,
+    logo: MainLogo,
+  },
  
   // 5️⃣ Senior Principal
   {
@@ -179,7 +197,7 @@ const speakers = [
     },
 
     topGradient: {
-      height: "55%",
+      height: "60%",
       background: "var(--bg-gradient)",
       position: "relative"
     },
@@ -220,28 +238,29 @@ const speakers = [
     title: {
       fontSize: "0.95rem",
       color: "var(--color-black)",
-      opacity: 0.8
+      opacity: 0.7,
+      fontWeight: "600"
     },
 
     org: {
       fontSize: "0.85rem",
-      color: "#3B1C32",
+      color: "#512447ff",
       marginTop: "4px",
-      opacity: 0.7
+      opacity: 1
     },
 
-    logoBox: {
-      marginTop: "15px",
-      display: "flex",
-      justifyContent: "center"
-    },
+    // logoBox: {
+    //   marginTop: "15px",
+    //   display: "flex",
+    //   justifyContent: "center"
+    // },
 
-    logoImg: {
-      width: "60px",
-      height: "60px",
-      objectFit: "contain",
-      opacity: 0.9
-    }
+    // logoImg: {
+    //   width: "60px",
+    //   height: "60px",
+    //   objectFit: "contain",
+    //   opacity: 0.9
+    // }
   };
 
   return (

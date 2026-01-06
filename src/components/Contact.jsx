@@ -388,7 +388,7 @@ const Contact = () => {
             transform: "rotateX(10deg) rotateY(-15deg)",
           }}
         ></div>
-        
+
         <div
           style={{
             position: "absolute",
@@ -403,7 +403,7 @@ const Contact = () => {
             transform: "rotateX(-15deg) rotateY(10deg)",
           }}
         ></div>
-        
+
         <div
           style={{
             position: "absolute",
@@ -459,7 +459,7 @@ const Contact = () => {
             .toString(36)
             .substring(2, 8)
             .toUpperCase();
-          
+
           return (
             <div
               key={`stream-${i}`}
@@ -493,7 +493,7 @@ const Contact = () => {
             opacity: "0.4",
           }}
         ></div>
-        
+
         <div
           style={{
             position: "absolute",
@@ -507,7 +507,7 @@ const Contact = () => {
             opacity: "0.3",
           }}
         ></div>
-        
+
         <div
           style={{
             position: "absolute",
@@ -548,10 +548,11 @@ const Contact = () => {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+            gridTemplateColumns: "repeat(3, minmax(280px, 1fr))",
             gap: "24px",
             maxWidth: "1200px",
             margin: "0 auto",
+
           }}
         >
           {contacts.map((c, i) => (
@@ -565,6 +566,13 @@ const Contact = () => {
                 padding: "26px",
                 transition: "transform 0.3s ease, box-shadow 0.3s ease",
                 cursor: "pointer",
+
+
+                  /* ⭐ CORE FIX */
+                gridColumn: i === 3 ? "2 / 3" : "auto",
+                width: "100%",       // 🔑 same width
+                justifySelf: "stretch",
+
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.transform = "translateY(-8px)";
