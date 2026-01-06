@@ -1,4 +1,3 @@
-
 // import { useEffect, useRef } from "react";
 
 // const Contact = () => {
@@ -316,7 +315,7 @@ const Contact = () => {
       phone: "8755676010",
     },
     {
-      title: "Delegate Opportunity",
+      title: "Delegate & Award Nomination Opportunity",
       name: "Basant Sharma",
       email: "basant@fintrexmedia.com",
       phone: "7505024107",
@@ -547,12 +546,12 @@ const Contact = () => {
 
         <div
           style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(3, minmax(280px, 1fr))",
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "center",
             gap: "24px",
             maxWidth: "1200px",
             margin: "0 auto",
-
           }}
         >
           {contacts.map((c, i) => (
@@ -566,14 +565,10 @@ const Contact = () => {
                 padding: "26px",
                 transition: "transform 0.3s ease, box-shadow 0.3s ease",
                 cursor: "pointer",
-
-
-                  /* ⭐ CORE FIX */
-                gridColumn: i === 3 ? "2 / 3" : "auto",
-                width: "100%",       // 🔑 same width
-                justifySelf: "stretch",
-
+                flex: "0 0 300px",
+                width: "300px",
               }}
+              className="contact-card"
               onMouseEnter={(e) => {
                 e.currentTarget.style.transform = "translateY(-8px)";
                 e.currentTarget.style.boxShadow = "0 10px 30px rgba(225,6,0,0.2)";
@@ -627,6 +622,14 @@ const Contact = () => {
           ))}
         </div>
       </div>
+      <style>{`
+        @media (min-width: 769px) {
+          .contact-card {
+            width: 350px;
+            flex: 0 0 320px;
+          }
+        }
+      `}</style>
     </section>
   );
 };
