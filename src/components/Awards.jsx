@@ -170,6 +170,7 @@ const HeroSection = () => {
           src={heroImg}
           alt="Education Tomorrow Awards 2026"
           className="hero-image"
+          loading="lazy"
         />
       </div>
     </section>
@@ -277,6 +278,7 @@ const HeroSection = () => {
                                 height={"100%"}
                                 width={"100%"}
                                 alt="Award Trophy"
+                                loading="lazy"
                             />
                             {/* <p style={{ color: "var(--color-red)", fontSize: "1.1rem", fontWeight: 700 }}>Award Trophy</p> */}
                         </div>
@@ -823,7 +825,7 @@ SWIFT Code: SBIN0065135`;
                     <div style={{ textAlign: "center", marginTop: "1.5rem" }}>
                         <a
                             className="cta glow-border"
-                            href="/Nominate"
+                            href="/nomination-registration"
                             style={{
                                 padding: "14px 30px",
                                 background: "var(--bg-gradient)",
@@ -833,6 +835,7 @@ SWIFT Code: SBIN0065135`;
                                 cursor: "pointer",
                                 fontWeight: 600,
                                 fontSize: "1rem",
+                                textDecoration: "none",
                             }}
                         >
                             Nominate Now
@@ -1284,7 +1287,7 @@ const Pricing = () => (
                                     }}
                                 >
                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2z"></path>
                                         <circle cx="12" cy="7" r="4"></circle>
                                     </svg>
                                 </div>
@@ -1372,10 +1375,10 @@ const Pricing = () => (
                         </p>
                         <a
                             className="cta glow-border"
-                            href="/Nominate"
+                            href="/nomination-registration"
                             style={{
                                 padding: "14px 30px",
-                                background: "var(--color-red)",
+                                background: "var(--color-red) !important",
                                 color: "var(--color-white)",
                                 borderRadius: "30px",
                                 border: "2px solid var(--color-red)",

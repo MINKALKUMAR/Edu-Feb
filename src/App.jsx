@@ -10,7 +10,9 @@ import ScrollToTop from "./components/ScrollToTop";
 
 const DelegateRegistration = lazy(() => import("./components/DelegateRegistration"));
 const SponsorshipRegistration = lazy(() => import("./components/SponsorshipRegistration"));
+const NominationRegistration = lazy(() => import("./components/NominationRegistration"));
 const Awards = lazy(() => import("./components/Awards"));
+
 
 function Layout() {
   const location = useLocation();
@@ -20,6 +22,7 @@ function Layout() {
     "/awards",
     "/delegate-registration",
     "/sponsorship-registration",
+    "/nomination-registration",
   ];
 
   const hideNavbars = hideNavbarRoutes.includes(location.pathname);
@@ -39,6 +42,7 @@ function Layout() {
             <Route path="/awards" element={<Awards />} />
             <Route path="/delegate-registration" element={<DelegateRegistration />} />
             <Route path="/sponsorship-registration" element={<SponsorshipRegistration />} />
+            <Route path="/nomination-registration" element={<NominationRegistration />} />
           </Routes>
 
         </Suspense>
