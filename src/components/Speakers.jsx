@@ -13,6 +13,8 @@ import HarpalThethi from "../assets/OurSpeakers/Dr. Harpal Thethi.webp";
 import manpreetsingh from "../assets/OurSpeakers/Prof (Dr.) Manpreet Singh Manna.png";
 import Colonel from "../assets/OurSpeakers/Dr. Colonel Atul Bhandari.png";
 import parmodKumar from "../assets/OurSpeakers/Dr Parmod Kumar.png";
+import ankurgill from "../assets/OurSpeakers/Ankur Gill.png";
+import murariLalGaur from "../assets/OurSpeakers/Prof. (Dr.) Murari Lal Gaur.png";
 
 import MainLogo from "../assets/MainLogo.png";
 function Speakers() {
@@ -70,6 +72,14 @@ const speakers = [
     img: Raghuveer,
     logo: MainLogo,
   },
+  {
+    name: "Ankur Gill",
+    title: "Director of Operations",
+    org: "Swami Vivekanand Group of Institutions, Chandigarh",
+    location: "",
+    img: ankurgill,
+    logo: MainLogo,
+  },
 
   // 3️⃣ Directors
   {
@@ -98,8 +108,14 @@ const speakers = [
     img: artiBansal,
     logo: MainLogo,
   },
-
- 
+  {
+    name: "Prof. (Dr.) Murari Lal Gaur",
+    title: "Chief Advisor, RSGI | Academic Member, BHU\nFormer Vice Chancellor & Chief Scientist",
+    org: "",
+    location: "",
+    img: murariLalGaur,
+    logo: MainLogo,
+  },
   {
     name: "Dr. Harpal Thethi",
     title: "Professor & Executive Dean - Corporate Relations & Career Planning",
@@ -150,9 +166,6 @@ const speakers = [
     img: vandnaShahi,
     logo: MainLogo,
   },
- 
-
- 
 ];
 
 
