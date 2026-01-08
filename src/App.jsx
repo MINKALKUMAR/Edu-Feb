@@ -40,9 +40,11 @@ function Layout() {
       {!hideNavbars && <Navbar />}
       {!hideNavbars && <ScrollNavbar />}
 
+       <ScrollToTop />
+
       <div className="content-container">
         <Suspense fallback={<div style={{ padding: "120px" }}>Loading...</div>}>
-          <ScrollToTop />
+         
 
           <Routes>
             <Route path="/" element={<Home />} />
