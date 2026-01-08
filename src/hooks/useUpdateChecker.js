@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const CURRENT_VERSION = "1.0.0"; // SAME as version.json
+const CURRENT_VERSION = "1.0.1"; // SAME as version.json
 
 export default function useUpdateChecker() {
   const [updateAvailable, setUpdateAvailable] = useState(false);
