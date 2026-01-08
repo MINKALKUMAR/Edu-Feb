@@ -7,6 +7,9 @@ import Home from "./components/Home";
 import Navbar from "./components/Navbar";
 import ScrollNavbar from "./components/ScrollNavbar";
 import ScrollToTop from "./components/ScrollToTop";
+import useUpdateChecker from "./hooks/useUpdateChecker";
+import UpdateBanner from "./components/UpdateBanner";
+
 
 const DelegateRegistration = lazy(() => import("./components/DelegateRegistration"));
 const SponsorshipRegistration = lazy(() => import("./components/SponsorshipRegistration"));
@@ -16,6 +19,7 @@ const Awards = lazy(() => import("./components/Awards"));
 
 function Layout() {
   const location = useLocation();
+  const updateAvailable = useUpdateChecker();
 
   // ✅ Pages where BOTH navbars should be hidden
   const hideNavbarRoutes = [
@@ -29,6 +33,9 @@ function Layout() {
 
   return (
     <>
+       {/* 🔔 Update Banner */}
+     {updateAvailable && <UpdateBanner />}
+
       {/* ✅ Hide BOTH navbars on selected pages */}
       {!hideNavbars && <Navbar />}
       {!hideNavbars && <ScrollNavbar />}
