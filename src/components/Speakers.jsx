@@ -15,6 +15,8 @@ import Colonel from "../assets/OurSpeakers/Dr. Colonel Atul Bhandari.png";
 import parmodKumar from "../assets/OurSpeakers/Dr Parmod Kumar.png";
 import ankurgill from "../assets/OurSpeakers/Ankur Gill.png";
 import murariLalGaur from "../assets/OurSpeakers/Prof. (Dr.) Murari Lal Gaur.png";
+import amitjain from "../assets/OurSpeakers/Dr. Amit Jain.png";
+import jasjit from "../assets/OurSpeakers/Jasjit Kaur Jaggi.png";
 
 import MainLogo from "../assets/MainLogo.png";
 function Speakers() {
@@ -124,6 +126,15 @@ const speakers = [
     img: HarpalThethi,
     logo: MainLogo,
   },
+  {
+    name: "Dr. Amit Jain",
+    title: "Dean",
+    org: "Inderprastha Engineering College (IPEC)",
+    location: "",
+    img: amitjain,
+    logo: MainLogo,
+  },
+
    {
     name: "Dr. Ashish Sharma",
     title: "Director",
@@ -146,6 +157,14 @@ const speakers = [
     org: "British Laureate School Mohali",
     location: "",
     img: Colonel,
+    logo: MainLogo,
+  },
+ {
+    name: "Jasjit Kaur Jaggi",
+    title: "Director Principal",
+    org: "Silver Wings Universal School",
+    location: "",
+    img:  jasjit,
     logo: MainLogo,
   },
  {
