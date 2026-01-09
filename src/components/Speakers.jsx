@@ -18,6 +18,7 @@ import murariLalGaur from "../assets/OurSpeakers/Prof. (Dr.) Murari Lal Gaur.png
 import amitjain from "../assets/OurSpeakers/Dr. Amit Jain.png";
 import jasjit from "../assets/OurSpeakers/Jasjit Kaur Jaggi.png";
 import anuKaushal from "../assets/OurSpeakers/Anu Kaushal.png";
+import sanjeevSharma from "../assets/OurSpeakers/Dr Sanjeev Sharma.png";
 
 import MainLogo from "../assets/MainLogo.png";
 function Speakers() {
@@ -91,6 +92,14 @@ const speakers = [
     org: "Govind Ballabh Pant Institute of Engineering & Technology, Pauri, Garhwal, Uttarakhand",
     location: "",
     img: vijayBanga,
+    logo: MainLogo,
+  },
+  {
+    name: "Dr. Sanjeev Sharma",
+    title: "Director",
+    org: "R D Engineering College",
+    location: "",
+    img: sanjeevSharma,
     logo: MainLogo,
   },
    // 6️⃣ Campus Director
