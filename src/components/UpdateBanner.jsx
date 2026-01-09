@@ -50,7 +50,6 @@ function UpdateBanner({ title, message }) {
             cursor: "pointer",
             transition: "all 0.2s ease",
             transform: hover ? "scale(1.05)" : "scale(1)",
-            border: "2px solid #ff0000ff"
           }}
         >
           Refresh

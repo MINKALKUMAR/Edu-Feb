@@ -1,6 +1,5 @@
 import { useEffect, useState, lazy, Suspense } from "react";
 import logo from "../assets/MainLogo.png";
-import UpdateBanner from "./UpdateBanner";
 
 /* ================== LAZY IMPORTS ================== */
 const About = lazy(() => import("./About"));
@@ -175,7 +174,6 @@ function Home() {
         <IndustryTestimonials />
         <Venue />
         <Contact />
-        <UpdateBanner/>
       </Suspense>
     </>
   );
