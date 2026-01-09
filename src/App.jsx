@@ -1,6 +1,6 @@
 // App.jsx
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
-import { Suspense, lazy } from "react";
+import { Suspense, lazy, useEffect } from "react";
 import "./App.css";
 
 import Home from "./components/Home";
@@ -21,7 +21,14 @@ function Layout() {
   const location = useLocation();
   const updateData = useUpdateChecker();
 
+  // ✅ FIX 1: Disable browser scroll restoration
+  useEffect(() => {
+    if ("scrollRestoration" in window.history) {
+      window.history.scrollRestoration = "manual";
+    }
+  }, []);
 
+ 
   // ✅ Pages where BOTH navbars should be hidden
   const hideNavbarRoutes = [
     "/awards",

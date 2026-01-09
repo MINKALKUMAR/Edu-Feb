@@ -94,14 +94,7 @@ const speakers = [
     img: vijayBanga,
     logo: MainLogo,
   },
-  {
-    name: "Dr. Sanjeev Sharma",
-    title: "Director",
-    org: "R D Engineering College",
-    location: "",
-    img: sanjeevSharma,
-    logo: MainLogo,
-  },
+
    // 6️⃣ Campus Director
   {
     name: "Dr. Honey Sharma",
@@ -152,7 +145,14 @@ const speakers = [
     img: amitjain,
     logo: MainLogo,
   },
-
+     {
+    name: "Dr. Sanjeev Sharma",
+    title: "Director",
+    org: "R D Engineering College",
+    location: "",
+    img: sanjeevSharma,
+    logo: MainLogo,
+  },
    {
     name: "Dr. Ashish Sharma",
     title: "Director",
