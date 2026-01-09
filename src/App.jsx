@@ -19,7 +19,8 @@ const Awards = lazy(() => import("./components/Awards"));
 
 function Layout() {
   const location = useLocation();
-  const updateAvailable = useUpdateChecker();
+  const updateData = useUpdateChecker();
+
 
   // ✅ Pages where BOTH navbars should be hidden
   const hideNavbarRoutes = [
@@ -34,7 +35,13 @@ function Layout() {
   return (
     <>
        {/* 🔔 Update Banner */}
-     {updateAvailable && <UpdateBanner />}
+     {updateData && (
+     <UpdateBanner
+    title={updateData.title}
+    message={updateData.message}
+  />
+)}
+
 
       {/* ✅ Hide BOTH navbars on selected pages */}
       {!hideNavbars && <Navbar />}

@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 
-const CURRENT_VERSION = "1.0.7"; // SAME as version.json
+const CURRENT_VERSION = "1.0.8"; // version user is currently running
 
 export default function useUpdateChecker() {
-  const [updateAvailable, setUpdateAvailable] = useState(false);
+  const [updateData, setUpdateData] = useState(null);
 
   useEffect(() => {
     const checkVersion = async () => {
@@ -12,7 +12,7 @@ export default function useUpdateChecker() {
         const data = await res.json();
 
         if (data.version !== CURRENT_VERSION) {
-          setUpdateAvailable(true);
+          setUpdateData(data); // store version, title, message
         }
       } catch (err) {
         console.log("Version check failed");
@@ -20,10 +20,10 @@ export default function useUpdateChecker() {
     };
 
     checkVersion();
-    const interval = setInterval(checkVersion, 30000); // check every 30 sec
+    const interval = setInterval(checkVersion, 30000); // every 30 sec
 
     return () => clearInterval(interval);
   }, []);
 
-  return updateAvailable;
+  return updateData; // null OR {version, title, message}
 }

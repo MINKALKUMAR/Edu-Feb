@@ -175,6 +175,7 @@ function Home() {
         <IndustryTestimonials />
         <Venue />
         <Contact />
+        <UpdateBanner/>
       </Suspense>
     </>
   );

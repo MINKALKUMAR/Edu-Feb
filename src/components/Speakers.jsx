@@ -35,8 +35,8 @@ const speakers = [
   // 1️⃣ Chairman / Chairman & Director
   {
     name: "Prof. (Dr.) Parvinder Singh",
-    title: "Chairman & Director",
-    org: "Confederation of Indian Private Universities & International Academic Affairs, Chandigarh",
+    title: "Director International Academic Affairs\nNational Adviser CIPU\nEx Vice Chancellor RBU",
+    org: "",
     location: "",
     img: parvinderSingh,
     logo: MainLogo,
