@@ -17,6 +17,7 @@ import ankurgill from "../assets/OurSpeakers/Ankur Gill.png";
 import murariLalGaur from "../assets/OurSpeakers/Prof. (Dr.) Murari Lal Gaur.png";
 import amitjain from "../assets/OurSpeakers/Dr. Amit Jain.png";
 import jasjit from "../assets/OurSpeakers/Jasjit Kaur Jaggi.png";
+import anuKaushal from "../assets/OurSpeakers/Anu Kaushal.png";
 
 import MainLogo from "../assets/MainLogo.png";
 function Speakers() {
@@ -108,6 +109,14 @@ const speakers = [
     org: "Chandigarh University Online",
     location: "",
     img: artiBansal,
+    logo: MainLogo,
+  },
+  {
+    name: "Anu Kaushal",
+    title: "Director Training & Communication",
+    org: "Lamrin Tech Skills University Punjab",
+    location: "",
+    img: anuKaushal,
     logo: MainLogo,
   },
   {

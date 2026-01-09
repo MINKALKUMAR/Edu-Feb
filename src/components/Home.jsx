@@ -157,7 +157,7 @@ function Home() {
               onMouseEnter={() => setHoverBtn2(true)}
               onMouseLeave={() => setHoverBtn2(false)}
             >
-              Express Interest
+              Sponsorship Query
             </a>
 
           </div>
