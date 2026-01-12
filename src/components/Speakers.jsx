@@ -19,6 +19,7 @@ import amitjain from "../assets/OurSpeakers/Dr. Amit Jain.png";
 import jasjit from "../assets/OurSpeakers/Jasjit Kaur Jaggi.png";
 import anuKaushal from "../assets/OurSpeakers/Anu Kaushal.png";
 import jayanand from "../assets/OurSpeakers/Prof. Jayanand.png";
+import ramandeepSaini from "../assets/OurSpeakers/Prof.(Dr.) Ramandeep Saini.png";
 import sanjeevSharma from "../assets/OurSpeakers/Dr Sanjeev Sharma.png";
 
 import MainLogo from "../assets/MainLogo.png";
@@ -91,6 +92,14 @@ const speakers = [
     org: "Swami Vivekanand Group of Institutions, Chandigarh",
     location: "",
     img: ankurgill,
+    logo: MainLogo,
+  },
+  {
+    name: "Prof.(Dr.) Ramandeep Saini",
+    title: "Director-Principal",
+    org: "Chandigarh Business School of Administration",
+    location: "",
+    img: ramandeepSaini,
     logo: MainLogo,
   },
 
