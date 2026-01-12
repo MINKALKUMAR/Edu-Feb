@@ -18,6 +18,7 @@ import murariLalGaur from "../assets/OurSpeakers/Prof. (Dr.) Murari Lal Gaur.png
 import amitjain from "../assets/OurSpeakers/Dr. Amit Jain.png";
 import jasjit from "../assets/OurSpeakers/Jasjit Kaur Jaggi.png";
 import anuKaushal from "../assets/OurSpeakers/Anu Kaushal.png";
+import jayanand from "../assets/OurSpeakers/Prof. Jayanand.png";
 import sanjeevSharma from "../assets/OurSpeakers/Dr Sanjeev Sharma.png";
 
 import MainLogo from "../assets/MainLogo.png";
@@ -74,6 +75,14 @@ const speakers = [
     org: "Chandigarh University",
     location: "",
     img: Raghuveer,
+    logo: MainLogo,
+  },
+  {
+    name: "Prof. Jayanand",
+    title: "Pro Vice Chancellor",
+    org: "Shobhit Deemed University",
+    location: "",
+    img: jayanand,
     logo: MainLogo,
   },
   {
