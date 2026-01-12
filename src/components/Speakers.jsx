@@ -78,7 +78,7 @@ const speakers = [
     logo: MainLogo,
   },
   {
-    name: "Prof. Jayanand",
+    name: "Prof. Dr. Jayanand",
     title: "Pro Vice Chancellor",
     org: "Shobhit Deemed University",
     location: "",
