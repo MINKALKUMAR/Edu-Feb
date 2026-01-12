@@ -15,6 +15,7 @@ const DelegateRegistration = lazy(() => import("./components/DelegateRegistratio
 const SponsorshipRegistration = lazy(() => import("./components/SponsorshipRegistration"));
 const NominationRegistration = lazy(() => import("./components/NominationRegistration"));
 const Awards = lazy(() => import("./components/Awards"));
+const Mailer = lazy(() => import("./components/Mailer"));
 
 
 function Layout() {
@@ -35,6 +36,7 @@ function Layout() {
     "/delegate-registration",
     "/sponsorship-registration",
     "/nomination-registration",
+    "/mailer",
   ];
 
   const hideNavbars = hideNavbarRoutes.includes(location.pathname);
@@ -66,6 +68,7 @@ function Layout() {
             <Route path="/delegate-registration" element={<DelegateRegistration />} />
             <Route path="/sponsorship-registration" element={<SponsorshipRegistration />} />
             <Route path="/nomination-registration" element={<NominationRegistration />} />
+            <Route path="/mailer" element={<Mailer />} />
           </Routes>
 
         </Suspense>
