@@ -57,7 +57,7 @@ function UpdateBanner({ title, message }) {
           boxShadow: "0 12px 30px rgba(0,0,0,0.3)",
           fontFamily: "Inter, Arial, sans-serif",
           maxWidth: "400px",
-          animation: "pulse 2s infinite",
+          animation: "pulse 6s infinite",
           border: "2px solid rgba(255, 255, 255, 0.3)",
           backdropFilter: "blur(10px)"
         }}
@@ -84,7 +84,7 @@ function UpdateBanner({ title, message }) {
             fontSize: "14px",
             fontWeight: 600,
             cursor: "pointer",
-            transition: "all 0.3s ease",
+            transition: "all 1s ease",
             transform: hover ? "scale(1.03)" : "scale(1.03)",
             boxShadow: hover ? "0 4px 12px rgba(255, 65, 108, 0.3)" : "none",
             whiteSpace: "nowrap",

@@ -1,6 +1,5 @@
 import { useEffect, useState, lazy, Suspense } from "react";
 import logo from "../assets/MainLogo.png";
-import UpdateBanner from "./UpdateBanner";
 
 /* ================== LAZY IMPORTS ================== */
 const About = lazy(() => import("./About"));
@@ -12,6 +11,7 @@ const IndustryTestimonials = lazy(() => import("./IndustryTestimonials"));
 const Contact = lazy(() => import("./Contact"));
 const Venue = lazy(() => import("./Venue"));
 const DiscussionPoints = lazy(() => import("./DiscussionPoints"));
+const GuestofHonour = lazy(() => import("./GuestofHonour"));
 
 function Home() {
   /* ================== HERO STATES ================== */
@@ -169,6 +169,7 @@ function Home() {
         <About />
         <Stats />
         <OurPartners />
+        {/* <GuestofHonour /> */}
         <Speakers />
         <DiscussionPoints />
         <PastGlimpses />
