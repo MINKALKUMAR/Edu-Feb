@@ -57,7 +57,7 @@ function Home() {
   /* ================== STYLES ================== */
   const styles = {
     hero: {
-      height: "100vh",
+      height: "120vh",
       width: "100%",
       display: "flex",
       justifyContent: "center",
@@ -86,8 +86,8 @@ function Home() {
     },
 
     logo: {
-      width: isMobile ? "260px" : "500px",
-      maxWidth: "90%",
+      width: isMobile ? "320px" : "768px",
+      // maxWidth: "90%",
       marginBottom: isMobile ? "14px" : "20px",
     },
 
