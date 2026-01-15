@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const CURRENT_VERSION = "1.0.61"; // version user is currently running
+const CURRENT_VERSION = "1.0.65"; // version user is currently running
 
 export default function useUpdateChecker() {
   const [updateData, setUpdateData] = useState(null);

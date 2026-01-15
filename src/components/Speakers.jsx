@@ -20,6 +20,7 @@ import jasjit from "../assets/OurSpeakers/Jasjit Kaur Jaggi.png";
 import anuKaushal from "../assets/OurSpeakers/Anu Kaushal.png";
 import jayanand from "../assets/OurSpeakers/Prof. Jayanand.png";
 import ramandeepSaini from "../assets/OurSpeakers/Prof.(Dr.) Ramandeep Saini.png";
+import gurkirpal from "../assets/OurSpeakers/Gurkirpal Singh.png";
 import sanjeevSharma from "../assets/OurSpeakers/Dr Sanjeev Sharma.png";
 
 import MainLogo from "../assets/MainLogo.png";
@@ -129,6 +130,14 @@ const speakers = [
     org: "Chandigarh University Online",
     location: "",
     img: artiBansal,
+    logo: MainLogo,
+  },
+  {
+    name: "Gurkirpal Singh",
+    title: "Additional Director",
+    org: "RIMT University",
+    location: "",
+    img: gurkirpal,
     logo: MainLogo,
   },
   {
