@@ -310,7 +310,7 @@ const Contact = () => {
     },
     {
       title: "Speaking & Award Nomination",
-      name: "Priyanshi Choudhary",
+      name: "Priyanshi Chaudhary",
       email: "priyanshi@fintrexmedia.com",
       phone: "8755676010",
     },
