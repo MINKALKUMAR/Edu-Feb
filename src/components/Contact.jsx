@@ -333,7 +333,7 @@ const Contact = () => {
       id="contact"
       style={{
         position: "relative",
-        minHeight: "100vh",
+        minHeight: "auto",
         overflow: "hidden",
         background: "var(--color-black, #000000)",
         display: "flex",

@@ -1,5 +1,6 @@
 import { useEffect, useState, lazy, Suspense } from "react";
 import logo from "../assets/MainLogo.png";
+import GuestSpeakerSection from "./GuestSpeakerSection";
 
 /* ================== LAZY IMPORTS ================== */
 const About = lazy(() => import("./About"));
@@ -11,7 +12,6 @@ const IndustryTestimonials = lazy(() => import("./IndustryTestimonials"));
 const Contact = lazy(() => import("./Contact"));
 const Venue = lazy(() => import("./Venue"));
 const DiscussionPoints = lazy(() => import("./DiscussionPoints"));
-const GuestofHonour = lazy(() => import("./GuestofHonour"));
 
 function Home() {
   /* ================== HERO STATES ================== */
@@ -52,12 +52,13 @@ function Home() {
     textDecoration: "none",
     minWidth: isMobile ? "220px" : "auto",
     textAlign: "center",
+    marginBottom: "20px",
   });
 
   /* ================== STYLES ================== */
   const styles = {
     hero: {
-      height: "120vh",
+      maxHeight: "120vh",
       width: "100%",
       display: "flex",
       justifyContent: "center",
@@ -169,7 +170,7 @@ function Home() {
         <About />
         <Stats />
         <OurPartners />
-        {/* <GuestofHonour /> */}
+        <GuestSpeakerSection/>
         <Speakers />
         <DiscussionPoints />
         <PastGlimpses />

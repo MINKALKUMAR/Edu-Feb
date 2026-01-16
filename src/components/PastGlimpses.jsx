@@ -319,8 +319,8 @@ export default function PastGlimpses() {
     <>
       <style>{`
         .pg-section {
-          min-height: 100vh;
-          padding: ${isMobile ? "40px 0 60px" : "70px 0"};
+          min-height: auto;
+          padding: ${isMobile ? "40px 0 20px" : "70px 0"};
           background: var(--bg-gradient);
           text-align: center;
           content-visibility: auto;

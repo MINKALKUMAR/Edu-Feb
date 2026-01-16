@@ -40,6 +40,7 @@ function Venue() {
       width: "100%",
       // background: "var(--bg-gradient)",
       padding: "90px 20px",
+      minheight: "auto",
     },
     heading: {
       textAlign: "center",

@@ -11,7 +11,7 @@ function About() {
   const styles = {
     section: {
       width: "100%",
-      minHeight: "100vh",
+      maxheight: "90vh",
       background: "var(--bg-gradient)",
       padding: "80px 20px",
     },
@@ -41,6 +41,7 @@ function About() {
       transform: visible ? "translateY(0)" : "translateY(30px)",
       transition: "opacity 0.8s ease, transform 0.8s ease",
       textAlign: "center",
+      marginBottom: "30px",
     },
 
     badge: {
