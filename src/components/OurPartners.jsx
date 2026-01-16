@@ -308,9 +308,8 @@ const OurPartners = () => {
     /* PARALLAX VIDEO SECTION */
     .partner-section {
       position: relative;
-      max-height: 80vh;
+      min-height: auto;
       padding: 40px;
-      margin-bottom: 50px;
       overflow: hidden;
     }
 
