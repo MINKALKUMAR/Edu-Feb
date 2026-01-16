@@ -144,7 +144,7 @@ const GuestSpeakerSection = () => {
   /* MAIN CONTAINER */
   const containerStyle = {
     width: '100%',
-    height: isMobile ? 'auto' : '80vh',
+    height: 'auto',
     padding: isMobile ? '30px 20px' : '40px 60px',
     display: 'flex',
     alignItems: 'center',

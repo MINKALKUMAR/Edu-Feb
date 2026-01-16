@@ -137,7 +137,7 @@ export default function IndustryTestimonials() {
 
       <style>{`
         .it-section {
-          min-height: 100vh;
+          min-height: auto;
           padding: 70px 16px;
           display: flex;
           flex-direction: column;
